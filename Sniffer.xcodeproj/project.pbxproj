@@ -12,7 +12,37 @@
 		D35240091F4BD090006656F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35240071F4BD090006656F0 /* Main.storyboard */; };
 		D352400B1F4BD090006656F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D352400A1F4BD090006656F0 /* Assets.xcassets */; };
 		D352400E1F4BD090006656F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D352400C1F4BD090006656F0 /* LaunchScreen.storyboard */; };
+		D35240221F4BD0E5006656F0 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D35240191F4BD0E5006656F0 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D35240281F4BD160006656F0 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240271F4BD160006656F0 /* PacketTunnelProvider.swift */; };
+		D352402B1F4BE259006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
+		D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
+		D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */; };
+		D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240321F4BECE8006656F0 /* HTTPConnection.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D35240201F4BD0E5006656F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3523FF81F4BD090006656F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D35240181F4BD0E5006656F0;
+			remoteInfo = PacketTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D35240261F4BD0E5006656F0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D35240221F4BD0E5006656F0 /* PacketTunnel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D35240001F4BD090006656F0 /* Sniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +52,13 @@
 		D352400A1F4BD090006656F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D352400D1F4BD090006656F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D352400F1F4BD090006656F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D35240191F4BD0E5006656F0 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D352401C1F4BD0E5006656F0 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
+		D352401F1F4BD0E5006656F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D35240271F4BD160006656F0 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPProxyServer.swift; sourceTree = "<group>"; };
+		D35240321F4BECE8006656F0 /* HTTPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +66,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D352402B1F4BE259006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35240161F4BD0E5006656F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				D35240021F4BD090006656F0 /* Sniffer */,
+				D352401A1F4BD0E5006656F0 /* PacketTunnel */,
 				D35240011F4BD090006656F0 /* Products */,
+				D35240291F4BE259006656F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D35240001F4BD090006656F0 /* Sniffer.app */,
+				D35240191F4BD0E5006656F0 /* PacketTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +113,34 @@
 			path = Sniffer;
 			sourceTree = "<group>";
 		};
+		D352401A1F4BD0E5006656F0 /* PacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				D35240271F4BD160006656F0 /* PacketTunnelProvider.swift */,
+				D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */,
+				D35240321F4BECE8006656F0 /* HTTPConnection.swift */,
+				D352401F1F4BD0E5006656F0 /* Info.plist */,
+				D352401B1F4BD0E5006656F0 /* Supporting Files */,
+			);
+			path = PacketTunnel;
+			sourceTree = "<group>";
+		};
+		D352401B1F4BD0E5006656F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D352401C1F4BD0E5006656F0 /* PacketTunnel.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D35240291F4BE259006656F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +151,35 @@
 				D3523FFC1F4BD090006656F0 /* Sources */,
 				D3523FFD1F4BD090006656F0 /* Frameworks */,
 				D3523FFE1F4BD090006656F0 /* Resources */,
+				D35240261F4BD0E5006656F0 /* Embed App Extensions */,
+				D352402F1F4BE2F9006656F0 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D35240211F4BD0E5006656F0 /* PBXTargetDependency */,
 			);
 			name = Sniffer;
 			productName = Sniffer;
 			productReference = D35240001F4BD090006656F0 /* Sniffer.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D35240181F4BD0E5006656F0 /* PacketTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D35240231F4BD0E5006656F0 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
+			buildPhases = (
+				D35240151F4BD0E5006656F0 /* Sources */,
+				D35240161F4BD0E5006656F0 /* Frameworks */,
+				D35240171F4BD0E5006656F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnel;
+			productName = PacketTunnel;
+			productReference = D35240191F4BD0E5006656F0 /* PacketTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -97,6 +194,12 @@
 					D3523FFF1F4BD090006656F0 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7SAYZHVU5H;
+						ProvisioningStyle = Automatic;
+					};
+					D35240181F4BD0E5006656F0 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 7SAYZHVU5H;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -115,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				D3523FFF1F4BD090006656F0 /* Sniffer */,
+				D35240181F4BD0E5006656F0 /* PacketTunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -130,7 +234,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D35240171F4BD0E5006656F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D352402F1F4BE2F9006656F0 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D3523FFC1F4BD090006656F0 /* Sources */ = {
@@ -142,7 +271,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D35240151F4BD0E5006656F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35240281F4BD160006656F0 /* PacketTunnelProvider.swift in Sources */,
+				D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */,
+				D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D35240211F4BD0E5006656F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D35240181F4BD0E5006656F0 /* PacketTunnel */;
+			targetProxy = D35240201F4BD0E5006656F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D35240071F4BD090006656F0 /* Main.storyboard */ = {
@@ -262,8 +409,13 @@
 		D35240131F4BD090006656F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sniffer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.Sniffer;
@@ -275,12 +427,56 @@
 		D35240141F4BD090006656F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Sniffer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.Sniffer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D35240241F4BD0E5006656F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.Sniffer.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D35240251F4BD0E5006656F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.Sniffer.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +498,14 @@
 			buildConfigurations = (
 				D35240131F4BD090006656F0 /* Debug */,
 				D35240141F4BD090006656F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D35240231F4BD0E5006656F0 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35240241F4BD0E5006656F0 /* Debug */,
+				D35240251F4BD0E5006656F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
