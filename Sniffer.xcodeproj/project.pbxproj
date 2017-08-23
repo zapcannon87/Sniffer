@@ -18,6 +18,10 @@
 		D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
 		D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */; };
 		D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240321F4BECE8006656F0 /* HTTPConnection.swift */; };
+		D35240351F4D2BC4006656F0 /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */; };
+		D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */; };
+		D35240391F4D3091006656F0 /* TCPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240371F4D3091006656F0 /* TCPConnection.swift */; };
+		D352403A1F4D3091006656F0 /* TCPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240381F4D3091006656F0 /* TCPProxyServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,9 @@
 		D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPProxyServer.swift; sourceTree = "<group>"; };
 		D35240321F4BECE8006656F0 /* HTTPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnection.swift; sourceTree = "<group>"; };
+		D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZPTCPIPStack.framework; path = Carthage/Build/iOS/ZPTCPIPStack.framework; sourceTree = "<group>"; };
+		D35240371F4D3091006656F0 /* TCPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPConnection.swift; sourceTree = "<group>"; };
+		D35240381F4D3091006656F0 /* TCPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D35240351F4D2BC4006656F0 /* ZPTCPIPStack.framework in Frameworks */,
 				D352402B1F4BE259006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */,
 				D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +128,8 @@
 				D35240271F4BD160006656F0 /* PacketTunnelProvider.swift */,
 				D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */,
 				D35240321F4BECE8006656F0 /* HTTPConnection.swift */,
+				D35240381F4D3091006656F0 /* TCPProxyServer.swift */,
+				D35240371F4D3091006656F0 /* TCPConnection.swift */,
 				D352401F1F4BD0E5006656F0 /* Info.plist */,
 				D352401B1F4BD0E5006656F0 /* Supporting Files */,
 			);
@@ -136,6 +147,7 @@
 		D35240291F4BE259006656F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */,
 				D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */,
 			);
 			name = Frameworks;
@@ -251,6 +263,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ZPTCPIPStack.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -276,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D35240281F4BD160006656F0 /* PacketTunnelProvider.swift in Sources */,
+				D35240391F4D3091006656F0 /* TCPConnection.swift in Sources */,
+				D352403A1F4D3091006656F0 /* TCPProxyServer.swift in Sources */,
 				D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */,
 				D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */,
 			);
@@ -500,6 +515,7 @@
 				D35240141F4BD090006656F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D35240231F4BD0E5006656F0 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +524,7 @@
 				D35240251F4BD0E5006656F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
