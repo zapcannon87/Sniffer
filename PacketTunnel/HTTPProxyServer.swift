@@ -15,6 +15,8 @@ class HTTPProxyServer: NSObject {
     
     fileprivate var index: Int = 0
     
+    fileprivate var connections: Set<HTTPConnection> = []
+    
     override init() {
         self.listenSocket = GCDAsyncSocket()
         super.init()
@@ -36,9 +38,9 @@ class HTTPProxyServer: NSObject {
         self.listenSocket.disconnect()
     }
     
-    func remove() {
-        self.listenSocket.delegateQueue?.async {
-            
+    func remove(with connection: HTTPConnection) {
+        self.listenSocket.delegateQueue!.async {
+            self.connections.remove(connection)
         }
     }
     
@@ -47,7 +49,13 @@ class HTTPProxyServer: NSObject {
 extension HTTPProxyServer: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-        
+        let conn: HTTPConnection = HTTPConnection(
+            index: self.index,
+            incomingSocket: sock, 
+            server: self
+        )
+        self.index += 1
+        self.connections.insert(conn)
     }
     
 }

@@ -72,7 +72,10 @@ class HTTPConnection: NSObject {
             self,
             delegateQueue: delegateQueue
         )
-        self.incomingSocket.readData(withTimeout: 5, tag: readTag.requestHeader)
+        self.incomingSocket.readData(
+            withTimeout: 5,
+            tag: readTag.requestHeader
+        )
     }
     
     override var hash: Int {
@@ -87,54 +90,74 @@ class HTTPConnection: NSObject {
         return lhs.index == rhs.index
     }
     
+    func close(with note: String) {
+        guard !self.didClose else {
+            return
+        }
+        self.didClose = true
+        
+        self.incomingSocket.disconnectAfterWriting()
+        self.outgoingSocket.disconnectAfterWriting()
+        
+        self.server?.remove(with: self)
+    }
+    
 }
 
 extension HTTPConnection: GCDAsyncSocketDelegate {
     
-    // MARK: GCDAsyncSocketDelegate
-    
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        if sock == self.outgoingSocket {
-            if self.requestHeader.method == HTTPMethod.CONNECT {
-                let httpVersion: String = self.requestHeader.requestLine?.version ?? "HTTP/1.1"
-                let responseData: Data = "\(httpVersion) 200 Connection Established\r\n\r\n".data(using: .ascii)!
-                self.incomingSocket.write(
-                    responseData,
-                    withTimeout: 5,
-                    tag: writeTag.connectHeader
-                )
-            } else {
-                self.outgoingSocket.write(
-                    self.requestHeader.rawData,
-                    withTimeout: 5,
-                    tag: writeTag.requestHeader
-                )
-            }
+        assert(self.outgoingSocket == sock, "error in sock")
+        if self.requestHeader.method == HTTPMethod.CONNECT {
+            let httpVersion: String = self.requestHeader.requestLine?.version ?? "HTTP/1.1"
+            let responseData: Data = "\(httpVersion) 200 Connection Established\r\n\r\n".data(using: .ascii)!
+            self.incomingSocket.write(
+                responseData,
+                withTimeout: 5,
+                tag: writeTag.connectHeader
+            )
+        } else {
+            self.outgoingSocket.write(
+                self.requestHeader.rawData,
+                withTimeout: 5,
+                tag: writeTag.requestHeader
+            )
         }
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-
+        if sock == self.incomingSocket {
+            self.close(with: "Local: \(String(describing: err))")
+        } else {
+            self.close(with: "Remote: \(String(describing: err))")
+        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         switch tag {
         case readTag.requestHeader:
+            assert(sock == self.incomingSocket, "error in sock")
             guard
                 let requestHeader: HTTPRequestHeader = HTTPRequestHeader(data: data),
                 let host: String = requestHeader.host
                 else
             {
+                self.close(with: "error in requestHeader")
                 return
             }
             self.requestHeader = requestHeader
             self.requestHelper.handleHeader(with: requestHeader)
             do {
-                try self.outgoingSocket.connect(toHost: host, onPort: requestHeader.port)
+                try self.outgoingSocket.connect(
+                    toHost: host, 
+                    onPort: requestHeader.port
+                )
             } catch {
+                self.close(with: "\(error)")
                 return
             }
         case readTag.requestPayload:
+            assert(sock == self.incomingSocket, "error in sock")
             self.requestHelper.handlePayload(with: data)
             self.outgoingSocket.write(
                 data, 
@@ -142,7 +165,9 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 tag: writeTag.requestPayload
             )
         case readTag.responseHeader:
+            assert(sock == self.outgoingSocket, "error in sock")
             guard let responseHeader: HTTPResponseHeader = HTTPResponseHeader(data: data) else {
+                self.close(with: "error in responseHeader")
                 return
             }
             self.responseHeader = responseHeader
@@ -153,6 +178,7 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 tag: writeTag.responseHeader
             )
         case readTag.responsePayload:
+            assert(sock == self.outgoingSocket, "error in sock")
             self.responseHelper.handlePayload(with: data)
             self.incomingSocket.write(
                 data,
@@ -160,12 +186,14 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 tag: writeTag.responsePayload
             )
         case readTag.connectIn:
+            assert(sock == self.incomingSocket, "error in sock")
             self.outgoingSocket.write(
                 data,
                 withTimeout: -1,
                 tag: writeTag.connectOut
             )
         case readTag.connectOut:
+            assert(sock == self.outgoingSocket, "error in sock")
             self.incomingSocket.write(
                 data, 
                 withTimeout: -1,
@@ -179,22 +207,26 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         switch tag {
         case writeTag.connectHeader, writeTag.connectIn, writeTag.connectOut:
-            
             if tag != writeTag.connectIn {
+                if tag == writeTag.connectHeader {
+                    assert(sock == self.incomingSocket, "error in sock")
+                } else {
+                    assert(sock == self.outgoingSocket, "error in sock")
+                }
                 self.incomingSocket.readData(
                     withTimeout: -1,
                     tag: readTag.connectIn
                 )
             }
             if tag != writeTag.connectOut {
+                assert(sock == self.incomingSocket, "error in sock")
                 self.outgoingSocket.readData(
                     withTimeout: -1,
                     tag: readTag.connectOut
                 )
             }
-            
         case writeTag.requestHeader, writeTag.requestPayload:
-            
+            assert(sock == self.outgoingSocket, "error in sock")
             if self.requestHelper.isEnd {
                 self.outgoingSocket.readData(
                     withTimeout: 5,
@@ -206,18 +238,16 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                     tag: readTag.requestPayload
                 )
             }
-            
         case writeTag.responseHeader, writeTag.responsePayload:
-            
+            assert(sock == self.incomingSocket, "error in sock")
             if self.responseHelper.isEnd {
-                
+                self.close(with: "EOF")
             } else {
                 self.outgoingSocket.readData(
                     withTimeout: 5,
                     tag: readTag.responsePayload
                 )
             }
-            
         default:
             fatalError()
         }
@@ -286,11 +316,8 @@ class HTTPHeader {
             self.headersLength = headerData.count
             self.lengthOfPayloadInHeaderPacket = 0
         }
-        guard let headerString: String = String(
-            data: headerData,
-            encoding: String.Encoding.ascii)
-            else {
-                return nil
+        guard let headerString: String = String(data: headerData, encoding: .ascii) else {
+            return nil
         }
         self.headerString = headerString
         let headers: [String] = headerString.components(
