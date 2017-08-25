@@ -24,7 +24,7 @@ class TCPProxyServer: NSObject {
         self.client = tunnelFlow
         self.server = ZPPacketTunnel.shared()
         super.init()
-        self.server.delegate(
+        self.server.setDelegate(
             self,
             delegateQueue: DispatchQueue(label: "TCPProxyServer.server.delegateQueue")
         )

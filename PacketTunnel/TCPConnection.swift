@@ -32,10 +32,14 @@ class TCPConnection: NSObject {
         self.remote = GCDAsyncSocket()
         self.server = server
         super.init()
-        self.local.delegate = self
+        let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
+        self.local.asyncSetDelegate(
+            self,
+            delegateQueue: queue
+        )
         self.remote.synchronouslySetDelegate(
             self,
-            delegateQueue: DispatchQueue(label: "TCPConnection.delegateQueue")
+            delegateQueue: queue
         )
         do {
             try self.remote.connect(
@@ -65,7 +69,7 @@ class TCPConnection: NSObject {
         }
         self.didClose = true
         
-        self.local.close()
+        self.local.closeAfterWriting()
         self.remote.disconnectAfterWriting()
         
         self.server?.remove(connection: self)
@@ -83,13 +87,6 @@ extension TCPConnection: ZPTCPConnectionDelegate {
         )
     }
     
-    func connectionDidCloseReadStream(_ connection: ZPTCPConnection) {
-        self.localFin = true
-        if self.localFin && self.remoteFin {
-            self.close(with: "EOF")
-        }
-    }
-    
     func connection(_ connection: ZPTCPConnection, didWriteData length: UInt16) {
         self.remote.readData(
             withTimeout: -1,
@@ -98,6 +95,13 @@ extension TCPConnection: ZPTCPConnectionDelegate {
             maxLength: UInt(UINT16_MAX / 2),
             tag: 0
         )
+    }
+    
+    func connectionDidCloseReadStream(_ connection: ZPTCPConnection) {
+        self.localFin = true
+        if self.localFin && self.remoteFin {
+            self.close(with: "EOF")
+        }
     }
     
     func connection(_ connection: ZPTCPConnection, didDisconnectWithError err: Error) {
@@ -123,15 +127,15 @@ extension TCPConnection: GCDAsyncSocketDelegate {
         self.local.write(data)
     }
     
+    func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
+        self.local.readData()
+    }
+    
     func socketDidCloseReadStream(_ sock: GCDAsyncSocket) {
         self.remoteFin = true
         if self.localFin && self.remoteFin {
             self.close(with: "EOF")
         }
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        self.local.readData()
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
