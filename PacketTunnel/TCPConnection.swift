@@ -35,7 +35,7 @@ class TCPConnection: NSObject {
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
         self.local.asyncSetDelegate(
             self,
-            delegateQueue: queue
+            delegateQueue: nil
         )
         self.remote.synchronouslySetDelegate(
             self,
@@ -87,14 +87,20 @@ extension TCPConnection: ZPTCPConnectionDelegate {
         )
     }
     
-    func connection(_ connection: ZPTCPConnection, didWriteData length: UInt16) {
-        self.remote.readData(
-            withTimeout: -1,
-            buffer: nil,
-            bufferOffset: 0,
-            maxLength: UInt(UINT16_MAX / 2),
-            tag: 0
-        )
+    func connection(_ connection: ZPTCPConnection, didWriteData length: UInt16, sendBuf isEmpty: Bool) {
+        if isEmpty {
+            self.remote.readData(
+                withTimeout: -1,
+                buffer: nil,
+                bufferOffset: 0,
+                maxLength: UInt(UINT16_MAX / 2),
+                tag: 0
+            )
+        }
+    }
+    
+    func connection(_ connection: ZPTCPConnection, didCheckWriteDataWithError err: Error) {
+        self.close(with: "Local write: \(err)")
     }
     
     func connectionDidCloseReadStream(_ connection: ZPTCPConnection) {

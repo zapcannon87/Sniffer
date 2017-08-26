@@ -7,19 +7,57 @@
 //
 
 import UIKit
+import NetworkExtension
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var oneSwitch: UISwitch!
+    
+    @IBAction func toggle(_ sender: UISwitch) {
+        guard let pm: NETunnelProviderManager = self.manager else {
+            return
+        }
+        if pm.connection.status == .connected {
+            (pm.connection as? NETunnelProviderSession)?.stopTunnel()
+        } else {
+            do {
+                try (pm.connection as? NETunnelProviderSession)?.startTunnel(options: nil)
+            } catch {
+                assertionFailure("\(error)")
+            }
+        }
+    }
+    
+    var manager: NETunnelProviderManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        NETunnelProviderManager.loadAllFromPreferences { managers, error in
+            guard let pm: NETunnelProviderManager = managers?.first else {
+                let pm = NETunnelProviderManager()
+                let pt = NETunnelProviderProtocol()
+                pt.providerBundleIdentifier = "zapcannon87.Sniffer.PacketTunnel"
+                pt.serverAddress = "Sniffer"
+                pm.protocolConfiguration = pt
+                pm.isEnabled = true
+                pm.saveToPreferences() { err in
+                    if let err: Error = err {
+                        assertionFailure("\(err)")
+                    }
+                }
+                return
+            }
+            pm.isEnabled = true
+            pm.saveToPreferences() { err in
+                if let err: Error = err {
+                    assertionFailure("\(err)")
+                }
+                self.oneSwitch.isOn = (pm.connection.status == .connected)
+                self.manager = pm
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 

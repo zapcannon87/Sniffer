@@ -12,16 +12,13 @@ import ZPTCPIPStack
 
 class TCPProxyServer: NSObject {
     
-    let client: NEPacketTunnelFlow
-    
     let server: ZPPacketTunnel
     
     fileprivate var index: Int = 0
     
     fileprivate var connections: Set<TCPConnection> = []
     
-    init?(tunnelFlow: NEPacketTunnelFlow) {
-        self.client = tunnelFlow
+    override init() {
         self.server = ZPPacketTunnel.shared()
         super.init()
         self.server.setDelegate(

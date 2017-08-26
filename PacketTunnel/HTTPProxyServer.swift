@@ -30,12 +30,8 @@ class HTTPProxyServer: NSObject {
         do {
             try self.listenSocket.accept(onInterface: host, port: 0)
         } catch {
-            assert(false, "\(error)")
+            assertionFailure("\(error)")
         }
-    }
-    
-    func stop() {
-        self.listenSocket.disconnect()
     }
     
     func remove(with connection: HTTPConnection) {
@@ -49,13 +45,17 @@ class HTTPProxyServer: NSObject {
 extension HTTPProxyServer: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-        let conn: HTTPConnection = HTTPConnection(
-            index: self.index,
-            incomingSocket: sock, 
-            server: self
-        )
-        self.index += 1
-        self.connections.insert(conn)
+//        let conn: HTTPConnection = HTTPConnection(
+//            index: self.index,
+//            incomingSocket: sock, 
+//            server: self
+//        )
+//        self.index += 1
+//        self.connections.insert(conn)
+    }
+    
+    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+        
     }
     
 }

@@ -43,7 +43,7 @@ class HTTPConnection: NSObject {
     
     let incomingSocket: GCDAsyncSocket
     
-    let outgoingSocket: GCDAsyncSocket
+    var outgoingSocket: GCDAsyncSocket!
     
     private(set) weak var server: HTTPProxyServer?
     
@@ -60,17 +60,15 @@ class HTTPConnection: NSObject {
     init(index: Int, incomingSocket: GCDAsyncSocket, server: HTTPProxyServer) {
         self.index = index
         self.incomingSocket = incomingSocket
-        self.outgoingSocket = GCDAsyncSocket()
         self.server = server
         super.init()
-        let delegateQueue: DispatchQueue = DispatchQueue(label: "HTTPConnection.GCDAsyncSocket.delegateQueue")
         self.incomingSocket.synchronouslySetDelegate(
             self,
-            delegateQueue: delegateQueue
+            delegateQueue: DispatchQueue(label: "")
         )
-        self.outgoingSocket.synchronouslySetDelegate(
-            self,
-            delegateQueue: delegateQueue
+        self.outgoingSocket = GCDAsyncSocket(
+            delegate: self,
+            delegateQueue: DispatchQueue(label: "")
         )
         self.incomingSocket.readData(
             withTimeout: 5,

@@ -8,14 +8,53 @@
 
 import NetworkExtension
 
+var Tunnel: PacketTunnelProvider?
+
 class PacketTunnelProvider: NEPacketTunnelProvider {
+    
+    var httpProxy: HTTPProxyServer?
+    
+    var tcpProxy: TCPProxyServer?
 
     override func startTunnel(options: [String : NSObject]? = nil, completionHandler: @escaping (Error?) -> Void) {
-        
+        Tunnel = self
+        /* http */
+        self.httpProxy = HTTPProxyServer()
+        self.httpProxy!.start(with: "localhost")
+        /* settings */
+        let tunnelSettings: NEPacketTunnelNetworkSettings = self.newPacketTunnelSettings(
+            proxyHost: self.httpProxy!.listenSocket.localHost!,
+            proxyPort: self.httpProxy!.listenSocket.localPort
+        )
+        /* tcp */
+        self.tcpProxy = TCPProxyServer()
+        self.tcpProxy!.server.ipv4Setting(
+            withAddress: tunnelSettings.iPv4Settings!.addresses[0],
+            netmask: tunnelSettings.iPv4Settings!.subnetMasks[0]
+        )
+        self.tcpProxy!.server.mtu(tunnelSettings.mtu!.uint16Value) { datas, numbers in
+            guard
+                let _datas: [Data] = datas,
+                let _nums: [NSNumber] = numbers
+                else
+            {
+                return
+            }
+            self.packetFlow.writePackets(_datas, withProtocols: _nums)
+        }
+        /* start */
+        self.setTunnelNetworkSettings(tunnelSettings) { err in
+            completionHandler(err)
+            if err == nil {
+                self.packetFlow.readPackets() { datas, nums in
+                    self.handlePackets(packets: datas, protocols: nums)
+                }
+            }
+        }
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        
+        completionHandler()
     }
     
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)? = nil) {
@@ -26,9 +65,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         for (index, data) in packets.enumerated() {
             switch protocols[index].int32Value {
             case AF_INET:
-                print(data)
+                self.tcpProxy?.server.ipPacketInput(data)
             case AF_INET6:
-                print(data)
+                break
             default:
                 fatalError()
             }
@@ -49,13 +88,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             address: proxyHost,
             port: Int(proxyPort)
         )
-        proxySettings.httpEnabled = true
         proxySettings.httpsServer = NEProxyServer(
             address: proxyHost,
             port: Int(proxyPort)
         )
-        proxySettings.httpsEnabled = true
         proxySettings.autoProxyConfigurationEnabled = false
+        proxySettings.httpEnabled = true
+        proxySettings.httpsEnabled = true
         proxySettings.excludeSimpleHostnames = true
         proxySettings.exceptionList = [
             "192.168.0.0/16",
