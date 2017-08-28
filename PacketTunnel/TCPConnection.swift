@@ -35,7 +35,7 @@ class TCPConnection: NSObject {
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
         self.local.asyncSetDelegate(
             self,
-            delegateQueue: nil
+            delegateQueue: queue
         )
         self.remote.synchronouslySetDelegate(
             self,

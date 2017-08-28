@@ -22,7 +22,7 @@ class HTTPProxyServer: NSObject {
         super.init()
         self.listenSocket.synchronouslySetDelegate(
             self,
-            delegateQueue: DispatchQueue(label: "HTTPProxyServer.listenSocket.delegateQueue")
+            delegateQueue: DispatchQueue(label: "HTTPProxyServer.delegateQueue")
         )
     }
     
@@ -45,17 +45,13 @@ class HTTPProxyServer: NSObject {
 extension HTTPProxyServer: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-//        let conn: HTTPConnection = HTTPConnection(
-//            index: self.index,
-//            incomingSocket: sock, 
-//            server: self
-//        )
-//        self.index += 1
-//        self.connections.insert(conn)
-    }
-    
-    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        
+        let conn: HTTPConnection = HTTPConnection(
+            index: self.index,
+            incomingSocket: newSocket,
+            server: self
+        )
+        self.index += 1
+        self.connections.insert(conn)
     }
     
 }

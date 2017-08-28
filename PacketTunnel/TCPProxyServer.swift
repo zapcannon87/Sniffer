@@ -23,7 +23,7 @@ class TCPProxyServer: NSObject {
         super.init()
         self.server.setDelegate(
             self,
-            delegateQueue: DispatchQueue(label: "TCPProxyServer.server.delegateQueue")
+            delegateQueue: DispatchQueue(label: "TCPProxyServer.delegateQueue")
         )
     }
     

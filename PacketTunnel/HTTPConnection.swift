@@ -57,18 +57,23 @@ class HTTPConnection: NSObject {
     
     fileprivate var didClose: Bool = false
     
+    fileprivate var localReadClosed: Bool = false
+    
+    fileprivate var remoteReadClosed: Bool = false
+    
     init(index: Int, incomingSocket: GCDAsyncSocket, server: HTTPProxyServer) {
         self.index = index
         self.incomingSocket = incomingSocket
         self.server = server
         super.init()
+        let queue: DispatchQueue = DispatchQueue(label: "HTTPConnection.delegateQueue")
         self.incomingSocket.synchronouslySetDelegate(
             self,
-            delegateQueue: DispatchQueue(label: "")
+            delegateQueue: queue
         )
         self.outgoingSocket = GCDAsyncSocket(
             delegate: self,
-            delegateQueue: DispatchQueue(label: "")
+            delegateQueue: queue
         )
         self.incomingSocket.readData(
             withTimeout: 5,
@@ -248,6 +253,17 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
             }
         default:
             fatalError()
+        }
+    }
+    
+    func socketDidCloseReadStream(_ sock: GCDAsyncSocket) {
+        if sock == self.incomingSocket {
+            self.localReadClosed = true
+        } else {
+            self.remoteReadClosed = true
+        }
+        if self.localReadClosed && self.remoteReadClosed {
+            self.close(with: "EOF")
         }
     }
     
