@@ -37,8 +37,13 @@ class ViewController: UIViewController {
             guard let pm: NETunnelProviderManager = managers?.first else {
                 let pm = NETunnelProviderManager()
                 let pt = NETunnelProviderProtocol()
-                pt.providerBundleIdentifier = "zapcannon87.Sniffer.PacketTunnel"
-                pt.serverAddress = "Sniffer"
+                #if TEST
+                    pt.providerBundleIdentifier = "zapcannon87.TestSZ.PacketTunnel"
+                    pt.serverAddress = "TestSZ"
+                #else
+                    pt.providerBundleIdentifier = "zapcannon87.Sniffer.PacketTunnel"
+                    pt.serverAddress = "Sniffer"
+                #endif
                 pm.protocolConfiguration = pt
                 pm.isEnabled = true
                 pm.saveToPreferences() { err in

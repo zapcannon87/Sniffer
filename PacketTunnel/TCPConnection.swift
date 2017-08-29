@@ -33,10 +33,10 @@ class TCPConnection: NSObject {
         self.server = server
         super.init()
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
-        self.local.asyncSetDelegate(
-            self,
-            delegateQueue: queue
-        )
+        if self.local.syncSetDelegate(self, delegateQueue: queue) {
+            self.close(with: "Local abort before connect remote.")
+            return
+        }
         self.remote.synchronouslySetDelegate(
             self,
             delegateQueue: queue
