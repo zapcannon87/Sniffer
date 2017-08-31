@@ -1,45 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X7m-yp-jEh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="0OW-b1-7EC">
+            <objects>
+                <navigationController id="X7m-yp-jEh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="25z-ea-b0G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vVQ-Ch-Mou"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Zz-HB-k9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1481" y="863"/>
+        </scene>
+        <!--Sniffer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sniffer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Sniffer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGF-zL-KhS">
-                                <rect key="frame" x="163" y="318" width="51" height="31"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zO1-fD-vB4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchCell" id="vOa-IR-hkq" customClass="SwitchCell" customModule="Sniffer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vOa-IR-hkq" id="ECy-7x-L0A">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-Tr-8Lk">
+                                                    <rect key="frame" x="8" y="10.5" width="51.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dji-0P-nhz">
+                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fpO-lx-D6S"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="iaV-Tr-8Lk" secondAttribute="leading" id="PUM-NV-AQH"/>
+                                                <constraint firstItem="Dji-0P-nhz" firstAttribute="centerY" secondItem="ECy-7x-L0A" secondAttribute="centerY" id="Vrh-3H-T4e"/>
+                                                <constraint firstItem="iaV-Tr-8Lk" firstAttribute="centerY" secondItem="ECy-7x-L0A" secondAttribute="centerY" id="YyL-mr-6sQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Dji-0P-nhz" secondAttribute="trailing" id="nHl-dR-GOE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="oneSwitch" destination="Dji-0P-nhz" id="aB7-AV-Jth"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="toggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="arD-UP-F24"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Dgt-2Z-9Lr"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="xgK-6q-CXK"/>
                                 </connections>
-                            </switch>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D4d-Gw-rKx">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CGF-zL-KhS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B1n-Uy-ENh"/>
-                            <constraint firstItem="CGF-zL-KhS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ep7-QX-qfb"/>
+                            <constraint firstItem="zO1-fD-vB4" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Aa6-9d-ZG2"/>
+                            <constraint firstItem="zO1-fD-vB4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Jgl-9N-wlm"/>
+                            <constraint firstItem="zO1-fD-vB4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZNZ-I8-6oA"/>
+                            <constraint firstItem="D4d-Gw-rKx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j2H-5M-Agd"/>
+                            <constraint firstItem="D4d-Gw-rKx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jgn-z3-jYe"/>
+                            <constraint firstItem="zO1-fD-vB4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lO3-Zi-V0Q"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Sniffer" id="XWj-fl-7MO"/>
                     <connections>
-                        <outlet property="oneSwitch" destination="CGF-zL-KhS" id="Z6z-RI-Vz8"/>
+                        <outlet property="activityIndicator" destination="D4d-Gw-rKx" id="9QI-er-Phx"/>
+                        <outlet property="tableView" destination="zO1-fD-vB4" id="ieb-As-yT6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-591" y="862"/>
         </scene>
     </scenes>
 </document>
