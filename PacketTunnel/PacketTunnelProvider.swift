@@ -58,7 +58,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)? = nil) {
-        
+        guard let message: String = String.init(data: messageData, encoding: .ascii) else {
+            completionHandler?(nil)
+            return
+        }
+        switch message {
+        case "getSessionsData":
+            SessionManager.shared.getSessionsData() { data in
+                completionHandler?(data)
+            }
+        default:
+            completionHandler?(nil)
+        }
     }
     
     func handlePackets(packets: [Data], protocols: [NSNumber]) {

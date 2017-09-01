@@ -49,17 +49,17 @@ class HTTPConnection: NSObject {
     
     fileprivate var requestHeader: HTTPRequestHeader!
     
-    fileprivate var requestHelper: HTTPPayloadHelper = HTTPPayloadHelper()
+    fileprivate var requestHelper: HTTPPayloadHelper = HTTPPayloadHelper.init()
     
     fileprivate var responseHeader: HTTPResponseHeader!
     
-    fileprivate var responseHelper: HTTPPayloadHelper = HTTPPayloadHelper()
+    fileprivate var responseHelper: HTTPPayloadHelper = HTTPPayloadHelper.init()
     
     fileprivate var didClose: Bool = false
     
-    fileprivate var localReadClosed: Bool = false
+    fileprivate var sessionModel: SessionModel = SessionModel.init()
     
-    fileprivate var remoteReadClosed: Bool = false
+    fileprivate var didAddSessionToManager: Bool = false
     
     init(index: Int, incomingSocket: GCDAsyncSocket, server: HTTPProxyServer) {
         self.index = index
@@ -99,10 +99,21 @@ class HTTPConnection: NSObject {
         }
         self.didClose = true
         
+        self.sessionModel.note = note
+        self.addSessionToManager()
+        
         self.incomingSocket.disconnectAfterWriting()
         self.outgoingSocket.disconnectAfterWriting()
         
         self.server?.remove(with: self)
+    }
+    
+    func addSessionToManager() {
+        guard !self.didAddSessionToManager else {
+            return
+        }
+        self.didAddSessionToManager = true
+        SessionManager.shared.append(self.sessionModel)
     }
     
 }
@@ -139,7 +150,10 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         switch tag {
         case readTag.requestHeader:
+            
             assert(sock == self.incomingSocket, "error in sock")
+            
+            /* get request header */
             guard
                 let requestHeader: HTTPRequestHeader = HTTPRequestHeader(data: data),
                 let host: String = requestHeader.host
@@ -148,8 +162,22 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 self.close(with: "error in requestHeader")
                 return
             }
+            
+            /* set request header & request helper */
             self.requestHeader = requestHeader
             self.requestHelper.handleHeader(with: requestHeader)
+            
+            /* session */
+            self.addSessionToManager()
+            self.sessionModel.date = Date.init().timeIntervalSince1970
+            self.sessionModel.method = self.requestHeader.method?.rawValue
+            self.sessionModel.userAgent = self.requestHeader.userAgent
+            self.sessionModel.url = self.requestHeader.url
+            self.sessionModel.localHost = self.incomingSocket.connectedHost
+            self.sessionModel.localPort = Int(self.incomingSocket.connectedPort)
+            self.sessionModel.requestHeaders = self.requestHeader.headerString
+            
+            /* connect remote */
             do {
                 try self.outgoingSocket.connect(
                     toHost: host, 
@@ -159,6 +187,7 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 self.close(with: "\(error)")
                 return
             }
+            
         case readTag.requestPayload:
             assert(sock == self.incomingSocket, "error in sock")
             self.requestHelper.handlePayload(with: data)
@@ -253,17 +282,6 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
             }
         default:
             fatalError()
-        }
-    }
-    
-    func socketDidCloseReadStream(_ sock: GCDAsyncSocket) {
-        if sock == self.incomingSocket {
-            self.localReadClosed = true
-        } else {
-            self.remoteReadClosed = true
-        }
-        if self.localReadClosed && self.remoteReadClosed {
-            self.close(with: "EOF")
         }
     }
     

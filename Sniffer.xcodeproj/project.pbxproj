@@ -22,6 +22,9 @@
 		D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */; };
 		D35240391F4D3091006656F0 /* TCPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240371F4D3091006656F0 /* TCPConnection.swift */; };
 		D352403A1F4D3091006656F0 /* TCPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240381F4D3091006656F0 /* TCPProxyServer.swift */; };
+		D379F6571F58FCC4007784F4 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F6561F58FCC4007784F4 /* SessionModel.swift */; };
+		D379F6581F58FCC4007784F4 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F6561F58FCC4007784F4 /* SessionModel.swift */; };
+		D379F65B1F590701007784F4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F65A1F590701007784F4 /* SessionManager.swift */; };
 		D3DE8E961F57A0F5006700C0 /* TunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */; };
 		D3DE8E981F57CA64006700C0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E971F57CA64006700C0 /* Extension.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,8 @@
 		D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZPTCPIPStack.framework; path = Carthage/Build/iOS/ZPTCPIPStack.framework; sourceTree = "<group>"; };
 		D35240371F4D3091006656F0 /* TCPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPConnection.swift; sourceTree = "<group>"; };
 		D35240381F4D3091006656F0 /* TCPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
+		D379F6561F58FCC4007784F4 /* SessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+		D379F65A1F590701007784F4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelManager.swift; sourceTree = "<group>"; };
 		D3DE8E971F57CA64006700C0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +125,7 @@
 				D35240051F4BD090006656F0 /* ViewController.swift */,
 				D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */,
 				D3DE8E971F57CA64006700C0 /* Extension.swift */,
+				D379F6561F58FCC4007784F4 /* SessionModel.swift */,
 				D35240071F4BD090006656F0 /* Main.storyboard */,
 				D352400A1F4BD090006656F0 /* Assets.xcassets */,
 				D352400C1F4BD090006656F0 /* LaunchScreen.storyboard */,
@@ -136,6 +142,7 @@
 				D35240321F4BECE8006656F0 /* HTTPConnection.swift */,
 				D35240381F4D3091006656F0 /* TCPProxyServer.swift */,
 				D35240371F4D3091006656F0 /* TCPConnection.swift */,
+				D379F65A1F590701007784F4 /* SessionManager.swift */,
 				D352401F1F4BD0E5006656F0 /* Info.plist */,
 				D352401B1F4BD0E5006656F0 /* Supporting Files */,
 			);
@@ -289,6 +296,7 @@
 				D35240061F4BD090006656F0 /* ViewController.swift in Sources */,
 				D35240041F4BD090006656F0 /* AppDelegate.swift in Sources */,
 				D3DE8E981F57CA64006700C0 /* Extension.swift in Sources */,
+				D379F6571F58FCC4007784F4 /* SessionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,9 +306,11 @@
 			files = (
 				D35240281F4BD160006656F0 /* PacketTunnelProvider.swift in Sources */,
 				D35240391F4D3091006656F0 /* TCPConnection.swift in Sources */,
+				D379F6581F58FCC4007784F4 /* SessionModel.swift in Sources */,
 				D352403A1F4D3091006656F0 /* TCPProxyServer.swift in Sources */,
 				D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */,
 				D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */,
+				D379F65B1F590701007784F4 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

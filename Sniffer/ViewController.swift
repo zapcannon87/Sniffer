@@ -145,6 +145,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK: - View
+
 class SwitchCell: UITableViewCell {
     
     @IBOutlet weak var oneSwitch: UISwitch!
