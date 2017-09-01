@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 class SessionModel {
     
@@ -110,7 +111,11 @@ class SessionModel {
     }
     
     enum sessionStatus: String {
-        case connecting = "connecting"
+        case connect = "Connect"
+        case sendRequest = "SendRequest"
+        case receiveResponse = "ReceiveResponse"
+        case active = "Active"
+        case close = "Close"
     }
     
     var status: String? {
@@ -122,7 +127,37 @@ class SessionModel {
         }
     }
     
-    var timings: [[String : Double]]? {
+    enum timingType: String {
+        case establishing = "Establishing"
+        case requestSending = "RequestSending"
+        case responseReceiving = "ResponseReceiving"
+        case transmitting = "Transmitting"
+    }
+    
+    enum timingTypeStatus: String {
+        case start = "start"
+        case end = "end"
+    }
+    
+    func insertTiming(type: timingType, status: timingTypeStatus) {
+        let date: Double = CACurrentMediaTime()
+        var timingsDic: [String : [String : Double]]
+        if var _timingsDic: [String : [String : Double]] = self.timings {
+            var typeDic: [String : Double]
+            if let _typeDic: [String : Double] = _timingsDic[type.rawValue] {
+                typeDic = _typeDic
+            } else {
+                typeDic = [status.rawValue : date]
+            }
+            _timingsDic.updateValue(typeDic, forKey: type.rawValue)
+            timingsDic = _timingsDic
+        } else {
+            timingsDic = [type.rawValue : [status.rawValue : date]]
+        }
+        self.timings = timingsDic
+    }
+    
+    private(set) var timings: [String : [String : Double]]? {
         get {
             return self.dic.value(for: "timings")
         }
@@ -130,6 +165,7 @@ class SessionModel {
             self.dic["timings"] = newValue
         }
     }
+    
     
     var note: String? {
         get {
