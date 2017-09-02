@@ -38,7 +38,7 @@ class SessionManager {
                 count: self.sessions.count
             )
             for (index, item) in self.sessions.enumerated() {
-                dics[index] = item.dic
+                dics[index] = item.getDic()
             }
             do {
                 let data: Data = try JSONSerialization.data(

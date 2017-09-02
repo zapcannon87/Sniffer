@@ -56,12 +56,21 @@ class SessionModel {
         }
     }
     
-    var localHost: String? {
+    var host: String? {
         get {
-            return self.dic.value(for: "localHost")
+            return self.dic.value(for: "host")
         }
         set {
-            self.dic["localHost"] = newValue
+            self.dic["host"] = newValue
+        }
+    }
+    
+    var localIP: String? {
+        get {
+            return self.dic.value(for: "localIP")
+        }
+        set {
+            self.dic["localIP"] = newValue
         }
     }
     
@@ -74,12 +83,12 @@ class SessionModel {
         }
     }
     
-    var remoteHost: String? {
+    var remoteIP: String? {
         get {
-            return self.dic.value(for: "remoteHost")
+            return self.dic.value(for: "remoteIP")
         }
         set {
-            self.dic["remoteHost"] = newValue
+            self.dic["remoteIP"] = newValue
         }
     }
     
@@ -92,38 +101,73 @@ class SessionModel {
         }
     }
     
-    var uploadTraffic: Int? {
-        get {
-            return self.dic.value(for: "uploadTraffic")
-        }
-        set {
-            self.dic["uploadTraffic"] = newValue
-        }
-    }
+    var uploadTraffic: Int = 0
     
-    var downloadTraffic: Int? {
-        get {
-            return self.dic.value(for: "downloadTraffic")
-        }
-        set {
-            self.dic["downloadTraffic"] = newValue
-        }
-    }
+    var downloadTraffic: Int = 0
     
     enum sessionStatus: String {
         case connect = "Connect"
+        case active = "Active"
         case sendRequest = "SendRequest"
         case receiveResponse = "ReceiveResponse"
-        case active = "Active"
+        case finish = "Finish"
         case close = "Close"
+        case null = "Null"
     }
     
-    var status: String? {
+    var status: sessionStatus {
         get {
-            return self.dic.value(for: "status")
+            if
+                let value: String = self.dic.value(for: "status"),
+                let status: sessionStatus = sessionStatus.init(rawValue: value)
+            {
+                return status
+            } else {
+                return .null
+            }
         }
         set {
-            self.dic["status"] = newValue
+            let oldValue: SessionModel.sessionStatus = self.status
+            switch (oldValue, newValue) {
+            case (.null, .connect):
+                self.insertTiming(type: .establishing, status: .start)
+            case (.connect, _):
+                if newValue == .close {
+                    break
+                }
+                self.insertTiming(type: .establishing, status: .end)
+                if newValue == .active {
+                    self.insertTiming(type: .transmitting, status: .start)
+                } else if newValue == .sendRequest {
+                    self.insertTiming(type: .requestSending, status: .start)
+                } else {
+                    assertionFailure("error in session status: \(oldValue) \(newValue)")
+                }
+            case (.active, .close):
+                self.insertTiming(type: .transmitting, status: .end)
+            case (.sendRequest, _):
+                if newValue == .close {
+                    break
+                }
+                self.insertTiming(type: .requestSending, status: .end)
+                if newValue == .receiveResponse {
+                    self.insertTiming(type: .responseReceiving, status: .start)
+                } else {
+                    assertionFailure("error in session status: \(oldValue) \(newValue)")
+                }
+            case (.receiveResponse, _):
+                if newValue == .close {
+                    break
+                }
+                if newValue == .finish {
+                    self.insertTiming(type: .responseReceiving, status: .end)
+                } else {
+                    assertionFailure("error in session status: \(oldValue) \(newValue)")
+                }
+            default:
+                assertionFailure("error in session status: \(oldValue) \(newValue)")
+            }
+            self.dic["status"] = newValue.rawValue
         }
     }
     
@@ -139,7 +183,7 @@ class SessionModel {
         case end = "end"
     }
     
-    func insertTiming(type: timingType, status: timingTypeStatus) {
+    private func insertTiming(type: timingType, status: timingTypeStatus) {
         let date: Double = CACurrentMediaTime()
         var timingsDic: [String : [String : Double]]
         if var _timingsDic: [String : [String : Double]] = self.timings {
@@ -194,7 +238,7 @@ class SessionModel {
         }
     }
     
-    private(set) var dic: [String : Any]
+    private var dic: [String : Any]
     
     init() {
         self.dic = [:]
@@ -202,6 +246,12 @@ class SessionModel {
     
     init(dic: [String : Any]) {
         self.dic = dic
+    }
+    
+    func getDic() -> [String : Any] {
+        self.dic.updateValue(self.uploadTraffic, forKey: "uploadTraffic")
+        self.dic.updateValue(self.downloadTraffic, forKey: "downloadTraffic")
+        return self.dic
     }
     
 }
