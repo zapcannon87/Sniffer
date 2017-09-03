@@ -38,13 +38,14 @@ class TCPProxyServer: NSObject {
 extension TCPProxyServer: ZPPacketTunnelDelegate {
     
     func tunnel(_ tunnel: ZPPacketTunnel, didEstablishNewTCPConnection conn: ZPTCPConnection) {
-        let tcpConn: TCPConnection = TCPConnection(
+        if let tcpConn: TCPConnection = TCPConnection(
             index: self.index,
             localSocket: conn,
-            server: self
-        )
-        self.index += 1
-        self.connections.insert(tcpConn)
+            server: self)
+        {
+            self.index += 1
+            self.connections.insert(tcpConn)
+        }
     }
     
 }

@@ -25,6 +25,7 @@
 		D379F6571F58FCC4007784F4 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F6561F58FCC4007784F4 /* SessionModel.swift */; };
 		D379F6581F58FCC4007784F4 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F6561F58FCC4007784F4 /* SessionModel.swift */; };
 		D379F65B1F590701007784F4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F65A1F590701007784F4 /* SessionManager.swift */; };
+		D39DFBB51F5BEEB90067F454 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DFBB41F5BEEB90067F454 /* SessionsViewController.swift */; };
 		D3DE8E961F57A0F5006700C0 /* TunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */; };
 		D3DE8E981F57CA64006700C0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E971F57CA64006700C0 /* Extension.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		D35240381F4D3091006656F0 /* TCPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
 		D379F6561F58FCC4007784F4 /* SessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		D379F65A1F590701007784F4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		D39DFBB41F5BEEB90067F454 /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelManager.swift; sourceTree = "<group>"; };
 		D3DE8E971F57CA64006700C0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 			children = (
 				D35240031F4BD090006656F0 /* AppDelegate.swift */,
 				D35240051F4BD090006656F0 /* ViewController.swift */,
+				D39DFBB41F5BEEB90067F454 /* SessionsViewController.swift */,
 				D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */,
 				D3DE8E971F57CA64006700C0 /* Extension.swift */,
 				D379F6561F58FCC4007784F4 /* SessionModel.swift */,
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3DE8E961F57A0F5006700C0 /* TunnelManager.swift in Sources */,
+				D39DFBB51F5BEEB90067F454 /* SessionsViewController.swift in Sources */,
 				D35240061F4BD090006656F0 /* ViewController.swift in Sources */,
 				D35240041F4BD090006656F0 /* AppDelegate.swift in Sources */,
 				D3DE8E981F57CA64006700C0 /* Extension.swift in Sources */,

@@ -129,6 +129,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0:
             return 1
+        case 1:
+            return 1
         default:
             return 0
         }
@@ -138,8 +140,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             return tableView.dequeueReusableCell(withIdentifier: "SwitchCell") as! SwitchCell
+        case (1, 0):
+            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "1")!
+            cell.textLabel?.text = "Sessions"
+            return cell
         default:
             fatalError()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        switch (indexPath.section, indexPath.row) {
+        case (1, 0):
+            let vc: SessionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "SessionsViewController") as! SessionsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
     

@@ -143,7 +143,7 @@ class SessionModel {
                 } else {
                     assertionFailure("error in session status: \(oldValue) \(newValue)")
                 }
-            case (.active, .close):
+            case (.active, .close), (.active, .finish):
                 self.insertTiming(type: .transmitting, status: .end)
             case (.sendRequest, _):
                 if newValue == .close {
@@ -246,6 +246,12 @@ class SessionModel {
     
     init(dic: [String : Any]) {
         self.dic = dic
+        if let uploadTraffic: Int = dic.value(for: "uploadTraffic") {
+            self.uploadTraffic = uploadTraffic
+        }
+        if let downloadTraffic: Int = dic.value(for: "downloadTraffic") {
+            self.downloadTraffic = downloadTraffic
+        }
     }
     
     func getDic() -> [String : Any] {

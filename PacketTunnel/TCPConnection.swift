@@ -20,13 +20,17 @@ class TCPConnection: NSObject {
     
     private(set) weak var server: TCPProxyServer?
     
+    fileprivate let sessionModel: SessionModel = SessionModel()
+    
     fileprivate var localFin: Bool = false
     
     fileprivate var remoteFin: Bool = false
     
     fileprivate var didClose: Bool = false
     
-    init(index: Int, localSocket: ZPTCPConnection, server: TCPProxyServer) {
+    fileprivate var didAddSessionToManager: Bool = false
+    
+    init?(index: Int, localSocket: ZPTCPConnection, server: TCPProxyServer) {
         self.index = index
         self.local = localSocket
         self.remote = GCDAsyncSocket()
@@ -34,13 +38,25 @@ class TCPConnection: NSObject {
         super.init()
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
         if self.local.syncSetDelegate(self, delegateQueue: queue) {
-            self.close(with: "Local abort before connect remote.")
-            return
+            print("Local abort before connect remote.")
+            return nil
         }
+        self.remote.autoDisconnectOnClosedReadStream = false
         self.remote.synchronouslySetDelegate(
             self,
             delegateQueue: queue
         )
+        
+        /* session */
+        self.sessionModel.date = Date().timeIntervalSince1970
+        self.sessionModel.method = "TCP"
+        self.sessionModel.localIP = self.local.srcAddr
+        self.sessionModel.localPort = Int(self.local.srcPort)
+        self.sessionModel.remoteIP = self.local.destAddr
+        self.sessionModel.remotePort = Int(self.local.destPort)
+        /* session status */
+        self.sessionModel.status = .connect
+        
         do {
             try self.remote.connect(
                 toHost: self.local.destAddr, 
@@ -69,10 +85,32 @@ class TCPConnection: NSObject {
         }
         self.didClose = true
         
+        /* close connection */
         self.local.closeAfterWriting()
         self.remote.disconnectAfterWriting()
         
+        if self.didAddSessionToManager {
+            /* session */
+            self.sessionModel.note = note
+            /* session status */
+            if note == "EOF" {
+                self.sessionModel.status = .finish
+            } else {
+                self.sessionModel.status = .close
+            }
+        } else {
+            // TODO: - log something
+        }
+        
         self.server?.remove(connection: self)
+    }
+    
+    func addSessionToManager() {
+        guard !self.didAddSessionToManager else {
+            return
+        }
+        self.didAddSessionToManager = true
+        SessionManager.shared.append(self.sessionModel)
     }
     
 }
@@ -80,14 +118,20 @@ class TCPConnection: NSObject {
 extension TCPConnection: ZPTCPConnectionDelegate {
     
     func connection(_ connection: ZPTCPConnection, didRead data: Data) {
+        
+        /* session */
+        self.sessionModel.uploadTraffic += data.count
+        
         self.remote.write(
             data,
             withTimeout: 5,
             tag: data.count
         )
+        
     }
     
     func connection(_ connection: ZPTCPConnection, didWriteData length: UInt16, sendBuf isEmpty: Bool) {
+        
         if isEmpty {
             self.remote.readData(
                 withTimeout: -1,
@@ -97,6 +141,7 @@ extension TCPConnection: ZPTCPConnectionDelegate {
                 tag: 0
             )
         }
+        
     }
     
     func connection(_ connection: ZPTCPConnection, didCheckWriteDataWithError err: Error) {
@@ -119,6 +164,10 @@ extension TCPConnection: ZPTCPConnectionDelegate {
 extension TCPConnection: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        
+        /* session status */
+        self.sessionModel.status = .active
+        
         self.local.readData()
         self.remote.readData(
             withTimeout: -1,
@@ -127,10 +176,16 @@ extension TCPConnection: GCDAsyncSocketDelegate {
             maxLength: UInt(UINT16_MAX / 2),
             tag: 0
         )
+        
     }
 
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        
+        /* session */
+        self.sessionModel.downloadTraffic += data.count
+        
         self.local.write(data)
+        
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
