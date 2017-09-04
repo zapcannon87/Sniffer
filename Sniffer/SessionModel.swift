@@ -184,21 +184,24 @@ class SessionModel {
     }
     
     private func insertTiming(type: timingType, status: timingTypeStatus) {
+        
         let date: Double = CACurrentMediaTime()
-        var timingsDic: [String : [String : Double]]
-        if var _timingsDic: [String : [String : Double]] = self.timings {
-            var typeDic: [String : Double]
-            if let _typeDic: [String : Double] = _timingsDic[type.rawValue] {
-                typeDic = _typeDic
-            } else {
-                typeDic = [status.rawValue : date]
-            }
-            _timingsDic.updateValue(typeDic, forKey: type.rawValue)
-            timingsDic = _timingsDic
+        var newTimings: [String : [String : Double]]
+        
+        if var timings: [String : [String : Double]] = self.timings
+        {
+            /* update timing status */
+            var newType: [String : Double] = timings[type.rawValue] ?? [:]
+            newType.updateValue(date, forKey: status.rawValue)
+            
+            /* update timing */
+            timings.updateValue(newType, forKey: type.rawValue)
+            newTimings = timings
         } else {
-            timingsDic = [type.rawValue : [status.rawValue : date]]
+            newTimings = [type.rawValue : [status.rawValue : date]]
         }
-        self.timings = timingsDic
+        
+        self.timings = newTimings
     }
     
     private(set) var timings: [String : [String : Double]]? {
@@ -210,6 +213,21 @@ class SessionModel {
         }
     }
     
+    func getTiming(type: timingType, dic: [String : [String : Double]]) -> Double? {
+        if let timing: [String : Double] = dic.value(for: type.rawValue)
+        {
+            if
+                let start: Double = timing[SessionModel.timingTypeStatus.start.rawValue],
+                let end: Double = timing[SessionModel.timingTypeStatus.end.rawValue]
+            {
+                return end - start
+            } else {
+                return -1
+            }
+        } else {
+            return nil
+        }
+    }
     
     var note: String? {
         get {

@@ -31,7 +31,7 @@ class SessionsViewController: UIViewController {
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        self.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
         
         self.refresh()
     }
@@ -104,7 +104,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SessionsViewCell = tableView.dequeueReusableCell(withIdentifier: "SessionsViewCell") as! SessionsViewCell
-        let model: SessionModel = self.models[indexPath.row]
+        let model: SessionModel = self.models[self.models.count - indexPath.row - 1]
         cell.indexLabel.text = "\(model.index ?? -1)"
         cell.methodLabel.text = model.method
         if let timeInterval: Double = model.date {
@@ -121,6 +121,15 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.miscLabel.text = misc
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        let vc: SessionViewController = self.storyboard?.instantiateViewController(withIdentifier: "SessionViewController") as! SessionViewController
+        vc.model = self.models[self.models.count - indexPath.row - 1]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
