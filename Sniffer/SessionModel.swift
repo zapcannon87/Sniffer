@@ -11,14 +11,7 @@ import QuartzCore
 
 class SessionModel {
     
-    var index: Int? {
-        get {
-            return self.dic.value(for: "index")
-        }
-        set {
-            self.dic["index"] = newValue
-        }
-    }
+    var index: Int = -1
     
     var date: Double? {
         get {
@@ -197,6 +190,7 @@ class SessionModel {
             /* update timing */
             timings.updateValue(newType, forKey: type.rawValue)
             newTimings = timings
+            
         } else {
             newTimings = [type.rawValue : [status.rawValue : date]]
         }
@@ -264,6 +258,9 @@ class SessionModel {
     
     init(dic: [String : Any]) {
         self.dic = dic
+        if let index: Int = dic.value(for: "index") {
+            self.index = index
+        }
         if let uploadTraffic: Int = dic.value(for: "uploadTraffic") {
             self.uploadTraffic = uploadTraffic
         }
@@ -273,9 +270,11 @@ class SessionModel {
     }
     
     func getDic() -> [String : Any] {
-        self.dic.updateValue(self.uploadTraffic, forKey: "uploadTraffic")
-        self.dic.updateValue(self.downloadTraffic, forKey: "downloadTraffic")
-        return self.dic
+        var dic = self.dic
+        dic.updateValue(self.index, forKey: "index")
+        dic.updateValue(self.uploadTraffic, forKey: "uploadTraffic")
+        dic.updateValue(self.downloadTraffic, forKey: "downloadTraffic")
+        return dic
     }
     
 }

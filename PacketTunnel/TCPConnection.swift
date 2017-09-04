@@ -22,10 +22,6 @@ class TCPConnection: NSObject {
     
     fileprivate let sessionModel: SessionModel = SessionModel()
     
-    fileprivate var localFin: Bool = false
-    
-    fileprivate var remoteFin: Bool = false
-    
     fileprivate var didClose: Bool = false
     
     fileprivate var didAddSessionToManager: Bool = false
@@ -37,17 +33,17 @@ class TCPConnection: NSObject {
         self.server = server
         super.init()
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
-        if self.local.syncSetDelegate(self, delegateQueue: queue) {
+        if !self.local.syncSetDelegate(self, delegateQueue: queue) {
             print("Local abort before connect remote.")
             return nil
         }
-        self.remote.autoDisconnectOnClosedReadStream = false
         self.remote.synchronouslySetDelegate(
             self,
             delegateQueue: queue
         )
         
         /* session */
+        self.addSessionToManager()
         self.sessionModel.date = Date().timeIntervalSince1970
         self.sessionModel.method = "TCP"
         self.sessionModel.localIP = self.local.srcAddr
@@ -148,13 +144,6 @@ extension TCPConnection: ZPTCPConnectionDelegate {
         self.close(with: "Local write: \(err)")
     }
     
-    func connectionDidCloseReadStream(_ connection: ZPTCPConnection) {
-        self.localFin = true
-        if self.localFin && self.remoteFin {
-            self.close(with: "EOF")
-        }
-    }
-    
     func connection(_ connection: ZPTCPConnection, didDisconnectWithError err: Error) {
         self.close(with: "Local: \(err)")
     }
@@ -190,13 +179,6 @@ extension TCPConnection: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         self.local.readData()
-    }
-    
-    func socketDidCloseReadStream(_ sock: GCDAsyncSocket) {
-        self.remoteFin = true
-        if self.localFin && self.remoteFin {
-            self.close(with: "EOF")
-        }
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {

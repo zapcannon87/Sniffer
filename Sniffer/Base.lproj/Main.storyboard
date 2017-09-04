@@ -29,7 +29,7 @@
         <!--Sniffer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Sniffer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="TestSZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchCell" id="vOa-IR-hkq" customClass="SwitchCell" customModule="Sniffer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchCell" id="vOa-IR-hkq" customClass="SwitchCell" customModule="TestSZ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vOa-IR-hkq" id="ECy-7x-L0A">
@@ -125,7 +125,7 @@
         <!--Sessions View Controller-->
         <scene sceneID="HVZ-lM-nWN">
             <objects>
-                <viewController storyboardIdentifier="SessionsViewController" hidesBottomBarWhenPushed="YES" id="T5W-hm-haW" customClass="SessionsViewController" customModule="Sniffer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionsViewController" hidesBottomBarWhenPushed="YES" id="T5W-hm-haW" customClass="SessionsViewController" customModule="TestSZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fUv-mT-FeU"/>
                         <viewControllerLayoutGuide type="bottom" id="Vp5-Nn-BT3"/>
@@ -138,7 +138,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionsViewCell" rowHeight="100" id="jIE-zt-MuR" customClass="SessionsViewCell" customModule="Sniffer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionsViewCell" rowHeight="100" id="jIE-zt-MuR" customClass="SessionsViewCell" customModule="TestSZ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIE-zt-MuR" id="Tf0-q0-fHR">
@@ -233,7 +233,7 @@
         <!--Session View Controller-->
         <scene sceneID="9XD-QL-FA7">
             <objects>
-                <viewController storyboardIdentifier="SessionViewController" id="lvx-Qv-bty" customClass="SessionViewController" customModule="Sniffer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionViewController" id="lvx-Qv-bty" customClass="SessionViewController" customModule="TestSZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gup-to-tk8"/>
                         <viewControllerLayoutGuide type="bottom" id="66h-kZ-QMd"/>
@@ -246,7 +246,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionViewCell" rowHeight="100" id="jki-h4-OEq" customClass="SessionViewCell" customModule="Sniffer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionViewCell" rowHeight="100" id="jki-h4-OEq" customClass="SessionViewCell" customModule="TestSZ" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jki-h4-OEq" id="TU4-M1-zp4">
@@ -276,8 +276,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="contentLabel" destination="6sh-YY-REA" id="Gva-z7-35Q"/>
                                             <outlet property="headerLabel" destination="7wL-lX-5yf" id="vDu-fT-0Qt"/>
-                                            <outlet property="textView" destination="6sh-YY-REA" id="q84-7y-K3I"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -19,7 +19,7 @@ class SessionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "\(self.model.index ?? -1)"
+        self.navigationItem.title = "\(self.model.index)"
         
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -41,51 +41,51 @@ extension SessionViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             cell.headerLabel.text = "Date"
             if let timeInterval: Double = self.model.date {
-                cell.textView.text = self.dateFormatter.string(
+                cell.contentLabel.text = self.dateFormatter.string(
                     from: Date(timeIntervalSince1970: timeInterval)
                 )
             } else {
-                cell.textView.text = ""
+                cell.contentLabel.text = ""
             }
         case 1:
             cell.headerLabel.text = "Method"
-            cell.textView.text = self.model.method ?? ""
+            cell.contentLabel.text = self.model.method ?? ""
         case 2:
             cell.headerLabel.text = "User Agent"
-            cell.textView.text = self.model.userAgent ?? ""
+            cell.contentLabel.text = self.model.userAgent ?? ""
         case 3:
             cell.headerLabel.text = "Host"
-            cell.textView.text = self.model.host ?? ""
+            cell.contentLabel.text = self.model.host ?? ""
         case 4:
             cell.headerLabel.text = "URL"
-            cell.textView.text = self.model.url ?? ""
+            cell.contentLabel.text = self.model.url ?? ""
         case 5:
             cell.headerLabel.text = "Local IP"
-            cell.textView.text = self.model.localIP ?? ""
+            cell.contentLabel.text = self.model.localIP ?? ""
         case 6:
             cell.headerLabel.text = "Local Port"
-            cell.textView.text = "\(self.model.localPort ?? -1)"
+            cell.contentLabel.text = "\(self.model.localPort ?? -1)"
         case 7:
             cell.headerLabel.text = "Remote IP"
-            cell.textView.text = self.model.remoteIP ?? ""
+            cell.contentLabel.text = self.model.remoteIP ?? ""
         case 8:
             cell.headerLabel.text = "Remote Port"
-            cell.textView.text = "\(self.model.remotePort ?? -1)"
+            cell.contentLabel.text = "\(self.model.remotePort ?? -1)"
         case 9:
             cell.headerLabel.text = "Upload Traffic"
-            cell.textView.text = ByteCountFormatter.string(
+            cell.contentLabel.text = ByteCountFormatter.string(
                 fromByteCount: Int64(self.model.uploadTraffic),
                 countStyle: .decimal
             )
         case 10:
             cell.headerLabel.text = "Download Traffic"
-            cell.textView.text = ByteCountFormatter.string(
+            cell.contentLabel.text = ByteCountFormatter.string(
                 fromByteCount: Int64(self.model.downloadTraffic),
                 countStyle: .decimal
             )
         case 11:
             cell.headerLabel.text = "Status"
-            cell.textView.text = self.model.status.rawValue
+            cell.contentLabel.text = self.model.status.rawValue
         case 12:
             cell.headerLabel.text = "Timing"
             if let timings: [String : [String : Double]] = self.model.timings {
@@ -118,19 +118,19 @@ extension SessionViewController: UITableViewDelegate, UITableViewDataSource {
                         texts.append("Transmitting: Not Finish")
                     }
                 }
-                cell.textView.text = texts.joined(separator: "\n")
+                cell.contentLabel.text = texts.joined(separator: "\n")
             } else {
-                cell.textView.text = ""
+                cell.contentLabel.text = ""
             }
         case 13:
             cell.headerLabel.text = "Note"
-            cell.textView.text = self.model.note ?? ""
+            cell.contentLabel.text = self.model.note ?? ""
         case 14:
             cell.headerLabel.text = "Request Headers"
-            cell.textView.text = self.model.requestHeaders ?? ""
+            cell.contentLabel.text = self.model.requestHeaders ?? ""
         case 15:
             cell.headerLabel.text = "Response Headers"
-            cell.textView.text = self.model.responseHeaders ?? ""
+            cell.contentLabel.text = self.model.responseHeaders ?? ""
         default:
             fatalError()
         }
@@ -142,6 +142,6 @@ extension SessionViewController: UITableViewDelegate, UITableViewDataSource {
 class SessionViewCell: UITableViewCell {
     
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var textView: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
 }

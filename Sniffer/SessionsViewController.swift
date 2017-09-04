@@ -105,7 +105,7 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SessionsViewCell = tableView.dequeueReusableCell(withIdentifier: "SessionsViewCell") as! SessionsViewCell
         let model: SessionModel = self.models[self.models.count - indexPath.row - 1]
-        cell.indexLabel.text = "\(model.index ?? -1)"
+        cell.indexLabel.text = "\(model.index)"
         cell.methodLabel.text = model.method
         if let timeInterval: Double = model.date {
             cell.dateLabel.text = self.dateFormatter.string(
