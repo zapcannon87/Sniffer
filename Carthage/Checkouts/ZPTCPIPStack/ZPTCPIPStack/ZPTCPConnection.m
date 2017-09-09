@@ -15,6 +15,10 @@ static void *IsOnTimerQueueKey = &IsOnTimerQueueKey; /* key to identify the queu
 
 err_t zp_tcp_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %s", __func__);
+#endif
+    
     ZPTCPConnection *conn = (__bridge ZPTCPConnection *)(arg);
     LWIP_ASSERT("Must be dispatched on timer queue",
                 dispatch_get_specific(IsOnTimerQueueKey) == (__bridge void *)(conn.timerQueue));
@@ -29,6 +33,10 @@ err_t zp_tcp_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 
 err_t zp_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %s", __func__);
+#endif
+    
     ZPTCPConnection *conn = (__bridge ZPTCPConnection *)(arg);
     LWIP_ASSERT("Must be dispatched on timer queue",
                 dispatch_get_specific(IsOnTimerQueueKey) == (__bridge void *)(conn.timerQueue));
@@ -71,6 +79,10 @@ err_t zp_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 
 err_t zp_tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %s", __func__);
+#endif
+    
     ZPTCPConnection *conn = (__bridge ZPTCPConnection *)(arg);
     LWIP_ASSERT("Must be dispatched on timer queue",
                 dispatch_get_specific(IsOnTimerQueueKey) == (__bridge void *)(conn.timerQueue));
@@ -80,11 +92,19 @@ err_t zp_tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 
 err_t zp_tcp_poll(void *arg, struct tcp_pcb *tpcb)
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %s", __func__);
+#endif
+    
     return ERR_OK;
 }
 
 void zp_tcp_err(void *arg, err_t err)
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %s", __func__);
+#endif
+    
     ZPTCPConnection *conn = (__bridge ZPTCPConnection *)(arg);
     LWIP_ASSERT("Must be dispatched on timer queue",
                 dispatch_get_specific(IsOnTimerQueueKey) == (__bridge void *)(conn.timerQueue));
@@ -120,6 +140,10 @@ void zp_tcp_err(void *arg, err_t err)
                              tcpInfo:(struct tcp_info *)tcpInfo
                                 pbuf:(struct pbuf *)pbuf
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     return [[self alloc] initWithTunnel:tunnel
                               identifie:identifie
                                  ipData:ipData
@@ -133,6 +157,10 @@ void zp_tcp_err(void *arg, err_t err)
                        tcpInfo:(struct tcp_info *)tcpInfo
                           pbuf:(struct pbuf *)pbuf
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     self = [super init];
     if (self) {
         _tunnel = tunnel;
@@ -164,7 +192,7 @@ void zp_tcp_err(void *arg, err_t err)
             return NULL;
             
         } else if (_block->tcpInfo.flags & TCP_SYN) {
-            LWIP_DEBUGF(TCP_DEBUG, ("TCP connection request %"U16_F" -> %"U16_F".\n", tcphdr->src, tcphdr->dest));
+            LWIP_DEBUGF(TCP_DEBUG, ("TCP connection request %"U16_F" -> %"U16_F".\n", _block->tcpInfo.tcphdr->src, _block->tcpInfo.tcphdr->dest));
             struct tcp_pcb *npcb = tcp_alloc(TCP_PRIO_NORMAL);
             /* If a new PCB could not be created (probably due to lack of memory),
              we don't do anything, but rely on the sender will retransmit the
@@ -259,6 +287,10 @@ void zp_tcp_err(void *arg, err_t err)
              destAddr:(NSString *)destAddr
              destPort:(UInt16)destPort
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     _srcAddr = srcAddr;
     _srcPort = srcPort;
     _destAddr = destAddr;
@@ -269,6 +301,10 @@ void zp_tcp_err(void *arg, err_t err)
              tcpInfo:(struct tcp_info)info
                 pbuf:(struct pbuf *)pbuf
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         _block->ip_data = ipdata;
         _block->tcpInfo = info;
@@ -280,6 +316,10 @@ void zp_tcp_err(void *arg, err_t err)
 
 - (BOOL)syncSetDelegate:(id<ZPTCPConnectionDelegate>)delegate delegateQueue:(dispatch_queue_t)queue
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     NSAssert(dispatch_get_specific(IsOnTimerQueueKey) != (__bridge void *)(_timerQueue),
              @"Must not be dispatched on timer queue");
     __block BOOL pcb_is_valid;
@@ -290,13 +330,21 @@ void zp_tcp_err(void *arg, err_t err)
         } else {
             _delegateQueue = dispatch_queue_create("ZPTCPConnection.delegateQueue", NULL);
         }
-        pcb_is_valid = (_block->pcb);
+        if (_block->pcb) {
+            pcb_is_valid = TRUE;
+        } else {
+            pcb_is_valid = FALSE;
+        }
     });
     return pcb_is_valid;
 }
 
 - (void)asyncSetDelegate:(id<ZPTCPConnectionDelegate>)delegate delegateQueue:(dispatch_queue_t)queue
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         _delegate = delegate;
         if (queue) {
@@ -309,6 +357,10 @@ void zp_tcp_err(void *arg, err_t err)
 
 - (void)write:(NSData *)data
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         struct tcp_pcb *pcb = _block->pcb;
         if (pcb == NULL || _block->close_after_writing) {
@@ -338,6 +390,10 @@ void zp_tcp_err(void *arg, err_t err)
 
 - (void)readData
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         struct tcp_pcb *pcb = _block->pcb;
         if (pcb == NULL) {
@@ -349,6 +405,10 @@ void zp_tcp_err(void *arg, err_t err)
 
 - (void)close
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         struct tcp_pcb *pcb = _block->pcb;
         if (pcb == NULL) {
@@ -360,6 +420,10 @@ void zp_tcp_err(void *arg, err_t err)
 
 - (void)closeAfterWriting
 {
+#if LOG_FUNC_NAME
+    NSLog(@"ZPTCPConnection %@", NSStringFromSelector(_cmd));
+#endif
+    
     dispatch_async(_timerQueue, ^{
         _block->close_after_writing = 1;
     });

@@ -15,7 +15,7 @@
 /*
  https://developer.apple.com/library/content/documentation/Performance/Conceptual/ManagingMemory/Articles/MemoryAlloc.html
  */
-#define MEM_ALIGNMENT           16
+#define MEM_ALIGNMENT           16 /* or 8 ? uncertainly... */
 
 //  IP options
 #define IP_FRAG                 0
@@ -60,7 +60,11 @@
 //  PPP options
 #define PPP_SUPPORT             0
 
-// Other
+//  Other
 #define LWIP_DONT_PROVIDE_BYTEORDER_FUNCTIONS
+
+//  Debug
+#define LWIP_DEBUG              LWIP_DBG_ON
+#define IP_DEBUG                LWIP_DBG_ON
 
 #endif /* LWIP_CUSTOM_LWIPOPTS_H */
