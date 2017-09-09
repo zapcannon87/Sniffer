@@ -543,9 +543,14 @@ class HTTPRequestHeader: HTTPHeader {
         }
     }()
     
-    lazy var host: String? = {
-        return self.getHeaderValue(with: "Host:")
-    }()
+    var host: String?  {
+        if let host: String = self.getHeaderValue(with: "Host:") {
+            /* some host has port e.g. xxx.xxx.xxx:80, so remove the `:Port` */
+            return host.components(separatedBy: ":").first
+        } else {
+            return nil
+        }
+    }
     
     lazy var port: UInt16 = {
         if let urlString: String = self.url,

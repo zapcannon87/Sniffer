@@ -50,6 +50,7 @@ class TCPConnection: NSObject {
         self.sessionModel.localPort = Int(self.local.srcPort)
         self.sessionModel.remoteIP = self.local.destAddr
         self.sessionModel.remotePort = Int(self.local.destPort)
+        self.sessionModel.url = "\(self.local.destAddr):\(self.local.destPort)"
         /* session status */
         self.sessionModel.status = .connect
         
