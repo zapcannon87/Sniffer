@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D321A2A11F63DB14005F447F /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */; };
+		D321A2A61F63E26D005F447F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D321A2A51F63E26D005F447F /* NetworkExtension.framework */; };
+		D321A2A71F63E285005F447F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D321A2A51F63E26D005F447F /* NetworkExtension.framework */; };
 		D35240041F4BD090006656F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240031F4BD090006656F0 /* AppDelegate.swift */; };
 		D35240061F4BD090006656F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240051F4BD090006656F0 /* ViewController.swift */; };
 		D35240091F4BD090006656F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35240071F4BD090006656F0 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		D352400E1F4BD090006656F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D352400C1F4BD090006656F0 /* LaunchScreen.storyboard */; };
 		D35240221F4BD0E5006656F0 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D35240191F4BD0E5006656F0 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D35240281F4BD160006656F0 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240271F4BD160006656F0 /* PacketTunnelProvider.swift */; };
-		D352402B1F4BE259006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
 		D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
 		D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */; };
 		D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240321F4BECE8006656F0 /* HTTPConnection.swift */; };
@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D321A2A51F63E26D005F447F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D35240001F4BD090006656F0 /* Sniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35240031F4BD090006656F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D35240051F4BD090006656F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,8 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D321A2A11F63DB14005F447F /* ZPTCPIPStack.framework in Frameworks */,
-				D352402B1F4BE259006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
+				D321A2A61F63E26D005F447F /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D321A2A71F63E285005F447F /* NetworkExtension.framework in Frameworks */,
 				D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */,
 				D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
@@ -166,6 +167,7 @@
 		D35240291F4BE259006656F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D321A2A51F63E26D005F447F /* NetworkExtension.framework */,
 				D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */,
 				D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */,
 			);
