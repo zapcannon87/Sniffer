@@ -76,11 +76,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         for (index, data) in packets.enumerated() {
             switch protocols[index].int32Value {
             case AF_INET:
-                if let rs = self.tcpProxy?.server.ipPacketInput(data) {
-                    NSLog("Sniffer IP Packet Input Valid: \(rs)")
-                } else {
-                    NSLog("Sniffer IP Packet Input Invalid")
-                }
+                self.tcpProxy?.server.ipPacketInput(data)
             case AF_INET6:
                 break
             default:

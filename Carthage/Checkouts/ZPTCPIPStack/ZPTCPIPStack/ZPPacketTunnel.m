@@ -11,6 +11,16 @@
 #import "ZPTCPConnection.h"
 #import "ZPTCPConnectionEx.h"
 
+void zp_debug_log(const char *message, ...)
+{
+#ifdef LWIP_DEBUG
+    va_list args;
+    va_start(args, message);
+    NSLog(@"%@",[[NSString alloc] initWithFormat:[NSString stringWithUTF8String:message] arguments:args]);
+    va_end(args);
+#endif
+}
+
 err_t netif_output(struct pbuf *p, BOOL is_ipv4)
 {
 #if LOG_FUNC_NAME
@@ -341,10 +351,16 @@ tcp_input_pre(struct pbuf *p, struct netif *inp)
     NSAssert(p != NULL, @"error in pbuf_alloc");
     NSAssert(pbuf_take(p, data.bytes, data.length) == ERR_OK, @"error in pbuf_take");
     
-    if (IP_HDR_GET_VERSION(p->payload) == 6) {
+    u8_t ip_v = IP_HDR_GET_VERSION(p->payload);
+    if (ip_v == 6) {
         return ip6_input(p, &_netif);
-    } else {
+    } else if (ip_v == 4) {
         return ip4_input(p, &_netif);
+    } else {
+#if LWIP_DEBUG
+        NSLog(@"ZPPacketTunnel IP Version: %hhu", ip_v);
+#endif
+        return ERR_VAL;
     }
 }
 
