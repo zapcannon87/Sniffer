@@ -19,7 +19,6 @@
 		D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */; };
 		D35240311F4BE7B6006656F0 /* HTTPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */; };
 		D35240331F4BECE8006656F0 /* HTTPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240321F4BECE8006656F0 /* HTTPConnection.swift */; };
-		D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */; };
 		D35240391F4D3091006656F0 /* TCPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240371F4D3091006656F0 /* TCPConnection.swift */; };
 		D352403A1F4D3091006656F0 /* TCPProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35240381F4D3091006656F0 /* TCPProxyServer.swift */; };
 		D379F6571F58FCC4007784F4 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F6561F58FCC4007784F4 /* SessionModel.swift */; };
@@ -27,6 +26,132 @@
 		D379F65B1F590701007784F4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379F65A1F590701007784F4 /* SessionManager.swift */; };
 		D39DFBB51F5BEEB90067F454 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DFBB41F5BEEB90067F454 /* SessionsViewController.swift */; };
 		D39DFBBA1F5CF7E10067F454 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DFBB91F5CF7E10067F454 /* SessionViewController.swift */; };
+		D3BAE1571F653FA200A349CA /* ZPTCPIPStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BAE1501F653FA200A349CA /* ZPTCPIPStack.framework */; };
+		D3BAE1581F653FA200A349CA /* ZPTCPIPStack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BAE1501F653FA200A349CA /* ZPTCPIPStack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3BAE1E41F653FFE00A349CA /* def.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE15F1F653FFE00A349CA /* def.c */; };
+		D3BAE1E51F653FFE00A349CA /* inet_chksum.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1601F653FFE00A349CA /* inet_chksum.c */; };
+		D3BAE1E61F653FFE00A349CA /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1611F653FFE00A349CA /* init.c */; };
+		D3BAE1E71F653FFE00A349CA /* ip.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1621F653FFE00A349CA /* ip.c */; };
+		D3BAE1E81F653FFE00A349CA /* autoip.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1641F653FFE00A349CA /* autoip.c */; };
+		D3BAE1E91F653FFE00A349CA /* dhcp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1651F653FFE00A349CA /* dhcp.c */; };
+		D3BAE1EA1F653FFE00A349CA /* etharp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1661F653FFE00A349CA /* etharp.c */; };
+		D3BAE1EB1F653FFE00A349CA /* icmp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1671F653FFE00A349CA /* icmp.c */; };
+		D3BAE1EC1F653FFE00A349CA /* igmp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1681F653FFE00A349CA /* igmp.c */; };
+		D3BAE1ED1F653FFE00A349CA /* ip4.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1691F653FFE00A349CA /* ip4.c */; };
+		D3BAE1EE1F653FFE00A349CA /* ip4_addr.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE16A1F653FFE00A349CA /* ip4_addr.c */; };
+		D3BAE1EF1F653FFE00A349CA /* ip4_frag.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE16B1F653FFE00A349CA /* ip4_frag.c */; };
+		D3BAE1F01F653FFE00A349CA /* dhcp6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE16D1F653FFE00A349CA /* dhcp6.c */; };
+		D3BAE1F11F653FFE00A349CA /* ethip6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE16E1F653FFE00A349CA /* ethip6.c */; };
+		D3BAE1F21F653FFE00A349CA /* icmp6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE16F1F653FFE00A349CA /* icmp6.c */; };
+		D3BAE1F31F653FFE00A349CA /* inet6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1701F653FFE00A349CA /* inet6.c */; };
+		D3BAE1F41F653FFE00A349CA /* ip6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1711F653FFE00A349CA /* ip6.c */; };
+		D3BAE1F51F653FFE00A349CA /* ip6_addr.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1721F653FFE00A349CA /* ip6_addr.c */; };
+		D3BAE1F61F653FFE00A349CA /* ip6_frag.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1731F653FFE00A349CA /* ip6_frag.c */; };
+		D3BAE1F71F653FFE00A349CA /* mld6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1741F653FFE00A349CA /* mld6.c */; };
+		D3BAE1F81F653FFE00A349CA /* nd6.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1751F653FFE00A349CA /* nd6.c */; };
+		D3BAE1F91F653FFE00A349CA /* mem.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1761F653FFE00A349CA /* mem.c */; };
+		D3BAE1FA1F653FFE00A349CA /* memp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1771F653FFE00A349CA /* memp.c */; };
+		D3BAE1FB1F653FFE00A349CA /* netif.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1781F653FFE00A349CA /* netif.c */; };
+		D3BAE1FC1F653FFE00A349CA /* pbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1791F653FFE00A349CA /* pbuf.c */; };
+		D3BAE1FD1F653FFE00A349CA /* stats.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17A1F653FFE00A349CA /* stats.c */; };
+		D3BAE1FE1F653FFE00A349CA /* sys.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17B1F653FFE00A349CA /* sys.c */; };
+		D3BAE1FF1F653FFE00A349CA /* tcp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17C1F653FFE00A349CA /* tcp.c */; };
+		D3BAE2001F653FFE00A349CA /* tcp_in.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17D1F653FFE00A349CA /* tcp_in.c */; };
+		D3BAE2011F653FFE00A349CA /* tcp_out.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17E1F653FFE00A349CA /* tcp_out.c */; };
+		D3BAE2021F653FFE00A349CA /* timeouts.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE17F1F653FFE00A349CA /* timeouts.c */; };
+		D3BAE2031F653FFE00A349CA /* udp.c in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1801F653FFE00A349CA /* udp.c */; };
+		D3BAE2041F653FFE00A349CA /* cc.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1831F653FFE00A349CA /* cc.h */; };
+		D3BAE2051F653FFE00A349CA /* fs.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1861F653FFE00A349CA /* fs.h */; };
+		D3BAE2061F653FFE00A349CA /* httpd.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1871F653FFE00A349CA /* httpd.h */; };
+		D3BAE2071F653FFE00A349CA /* httpd_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1881F653FFE00A349CA /* httpd_opts.h */; };
+		D3BAE2081F653FFE00A349CA /* lwiperf.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1891F653FFE00A349CA /* lwiperf.h */; };
+		D3BAE2091F653FFE00A349CA /* mdns.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18A1F653FFE00A349CA /* mdns.h */; };
+		D3BAE20A1F653FFE00A349CA /* mdns_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18B1F653FFE00A349CA /* mdns_opts.h */; };
+		D3BAE20B1F653FFE00A349CA /* mdns_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18C1F653FFE00A349CA /* mdns_priv.h */; };
+		D3BAE20C1F653FFE00A349CA /* mqtt.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18D1F653FFE00A349CA /* mqtt.h */; };
+		D3BAE20D1F653FFE00A349CA /* mqtt_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18E1F653FFE00A349CA /* mqtt_opts.h */; };
+		D3BAE20E1F653FFE00A349CA /* netbiosns.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE18F1F653FFE00A349CA /* netbiosns.h */; };
+		D3BAE20F1F653FFE00A349CA /* netbiosns_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1901F653FFE00A349CA /* netbiosns_opts.h */; };
+		D3BAE2101F653FFE00A349CA /* snmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1911F653FFE00A349CA /* snmp.h */; };
+		D3BAE2111F653FFE00A349CA /* snmp_core.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1921F653FFE00A349CA /* snmp_core.h */; };
+		D3BAE2121F653FFE00A349CA /* snmp_mib2.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1931F653FFE00A349CA /* snmp_mib2.h */; };
+		D3BAE2131F653FFE00A349CA /* snmp_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1941F653FFE00A349CA /* snmp_opts.h */; };
+		D3BAE2141F653FFE00A349CA /* snmp_scalar.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1951F653FFE00A349CA /* snmp_scalar.h */; };
+		D3BAE2151F653FFE00A349CA /* snmp_table.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1961F653FFE00A349CA /* snmp_table.h */; };
+		D3BAE2161F653FFE00A349CA /* snmp_threadsync.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1971F653FFE00A349CA /* snmp_threadsync.h */; };
+		D3BAE2171F653FFE00A349CA /* snmpv3.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1981F653FFE00A349CA /* snmpv3.h */; };
+		D3BAE2181F653FFE00A349CA /* sntp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1991F653FFE00A349CA /* sntp.h */; };
+		D3BAE2191F653FFE00A349CA /* sntp_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19A1F653FFE00A349CA /* sntp_opts.h */; };
+		D3BAE21A1F653FFE00A349CA /* tftp_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19B1F653FFE00A349CA /* tftp_opts.h */; };
+		D3BAE21B1F653FFE00A349CA /* tftp_server.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19C1F653FFE00A349CA /* tftp_server.h */; };
+		D3BAE21C1F653FFE00A349CA /* arch.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19D1F653FFE00A349CA /* arch.h */; };
+		D3BAE21D1F653FFE00A349CA /* autoip.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19E1F653FFE00A349CA /* autoip.h */; };
+		D3BAE21E1F653FFE00A349CA /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE19F1F653FFE00A349CA /* debug.h */; };
+		D3BAE21F1F653FFE00A349CA /* def.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A01F653FFE00A349CA /* def.h */; };
+		D3BAE2201F653FFE00A349CA /* dhcp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A11F653FFE00A349CA /* dhcp.h */; };
+		D3BAE2211F653FFE00A349CA /* dhcp6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A21F653FFE00A349CA /* dhcp6.h */; };
+		D3BAE2221F653FFE00A349CA /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A31F653FFE00A349CA /* err.h */; };
+		D3BAE2231F653FFE00A349CA /* errno.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A41F653FFE00A349CA /* errno.h */; };
+		D3BAE2241F653FFE00A349CA /* etharp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A51F653FFE00A349CA /* etharp.h */; };
+		D3BAE2251F653FFE00A349CA /* ethip6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A61F653FFE00A349CA /* ethip6.h */; };
+		D3BAE2261F653FFE00A349CA /* icmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A71F653FFE00A349CA /* icmp.h */; };
+		D3BAE2271F653FFE00A349CA /* icmp6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A81F653FFE00A349CA /* icmp6.h */; };
+		D3BAE2281F653FFE00A349CA /* igmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1A91F653FFE00A349CA /* igmp.h */; };
+		D3BAE2291F653FFE00A349CA /* inet.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AA1F653FFE00A349CA /* inet.h */; };
+		D3BAE22A1F653FFE00A349CA /* inet_chksum.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AB1F653FFE00A349CA /* inet_chksum.h */; };
+		D3BAE22B1F653FFE00A349CA /* init.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AC1F653FFE00A349CA /* init.h */; };
+		D3BAE22C1F653FFE00A349CA /* ip.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AD1F653FFE00A349CA /* ip.h */; };
+		D3BAE22D1F653FFE00A349CA /* ip4.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AE1F653FFE00A349CA /* ip4.h */; };
+		D3BAE22E1F653FFE00A349CA /* ip4_addr.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1AF1F653FFE00A349CA /* ip4_addr.h */; };
+		D3BAE22F1F653FFE00A349CA /* ip4_frag.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B01F653FFE00A349CA /* ip4_frag.h */; };
+		D3BAE2301F653FFE00A349CA /* ip6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B11F653FFE00A349CA /* ip6.h */; };
+		D3BAE2311F653FFE00A349CA /* ip6_addr.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B21F653FFE00A349CA /* ip6_addr.h */; };
+		D3BAE2321F653FFE00A349CA /* ip6_frag.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B31F653FFE00A349CA /* ip6_frag.h */; };
+		D3BAE2331F653FFE00A349CA /* ip_addr.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B41F653FFE00A349CA /* ip_addr.h */; };
+		D3BAE2341F653FFE00A349CA /* mem.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B51F653FFE00A349CA /* mem.h */; };
+		D3BAE2351F653FFE00A349CA /* memp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B61F653FFE00A349CA /* memp.h */; };
+		D3BAE2361F653FFE00A349CA /* mld6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B71F653FFE00A349CA /* mld6.h */; };
+		D3BAE2371F653FFE00A349CA /* nd6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B81F653FFE00A349CA /* nd6.h */; };
+		D3BAE2381F653FFE00A349CA /* netif.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1B91F653FFE00A349CA /* netif.h */; };
+		D3BAE2391F653FFE00A349CA /* opt.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1BA1F653FFE00A349CA /* opt.h */; };
+		D3BAE23A1F653FFE00A349CA /* pbuf.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1BB1F653FFE00A349CA /* pbuf.h */; };
+		D3BAE23B1F653FFE00A349CA /* memp_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1BD1F653FFE00A349CA /* memp_priv.h */; };
+		D3BAE23C1F653FFE00A349CA /* memp_std.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1BE1F653FFE00A349CA /* memp_std.h */; };
+		D3BAE23D1F653FFE00A349CA /* nd6_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1BF1F653FFE00A349CA /* nd6_priv.h */; };
+		D3BAE23E1F653FFE00A349CA /* tcp_priv.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C01F653FFE00A349CA /* tcp_priv.h */; };
+		D3BAE23F1F653FFE00A349CA /* autoip.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C21F653FFE00A349CA /* autoip.h */; };
+		D3BAE2401F653FFE00A349CA /* dhcp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C31F653FFE00A349CA /* dhcp.h */; };
+		D3BAE2411F653FFE00A349CA /* etharp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C41F653FFE00A349CA /* etharp.h */; };
+		D3BAE2421F653FFE00A349CA /* ethernet.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C51F653FFE00A349CA /* ethernet.h */; };
+		D3BAE2431F653FFE00A349CA /* icmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C61F653FFE00A349CA /* icmp.h */; };
+		D3BAE2441F653FFE00A349CA /* icmp6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C71F653FFE00A349CA /* icmp6.h */; };
+		D3BAE2451F653FFE00A349CA /* igmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C81F653FFE00A349CA /* igmp.h */; };
+		D3BAE2461F653FFE00A349CA /* ip.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1C91F653FFE00A349CA /* ip.h */; };
+		D3BAE2471F653FFE00A349CA /* ip4.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CA1F653FFE00A349CA /* ip4.h */; };
+		D3BAE2481F653FFE00A349CA /* ip6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CB1F653FFE00A349CA /* ip6.h */; };
+		D3BAE2491F653FFE00A349CA /* mld6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CC1F653FFE00A349CA /* mld6.h */; };
+		D3BAE24A1F653FFE00A349CA /* nd6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CD1F653FFE00A349CA /* nd6.h */; };
+		D3BAE24B1F653FFE00A349CA /* tcp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CE1F653FFE00A349CA /* tcp.h */; };
+		D3BAE24C1F653FFE00A349CA /* udp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1CF1F653FFE00A349CA /* udp.h */; };
+		D3BAE24D1F653FFE00A349CA /* snmp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D01F653FFE00A349CA /* snmp.h */; };
+		D3BAE24E1F653FFE00A349CA /* stats.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D11F653FFE00A349CA /* stats.h */; };
+		D3BAE24F1F653FFE00A349CA /* sys.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D21F653FFE00A349CA /* sys.h */; };
+		D3BAE2501F653FFE00A349CA /* tcp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D31F653FFE00A349CA /* tcp.h */; };
+		D3BAE2511F653FFE00A349CA /* timeouts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D41F653FFE00A349CA /* timeouts.h */; };
+		D3BAE2521F653FFE00A349CA /* udp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D51F653FFE00A349CA /* udp.h */; };
+		D3BAE2531F653FFE00A349CA /* etharp.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D71F653FFE00A349CA /* etharp.h */; };
+		D3BAE2541F653FFE00A349CA /* ethernet.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D81F653FFE00A349CA /* ethernet.h */; };
+		D3BAE2551F653FFE00A349CA /* lowpan6.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1D91F653FFE00A349CA /* lowpan6.h */; };
+		D3BAE2561F653FFE00A349CA /* lowpan6_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1DA1F653FFE00A349CA /* lowpan6_opts.h */; };
+		D3BAE2571F653FFE00A349CA /* lwipopts.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1DB1F653FFE00A349CA /* lwipopts.h */; };
+		D3BAE2581F653FFE00A349CA /* lwIP.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1DC1F653FFE00A349CA /* lwIP.h */; };
+		D3BAE2591F653FFE00A349CA /* ZPPacketTunnel.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1DD1F653FFE00A349CA /* ZPPacketTunnel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3BAE25A1F653FFE00A349CA /* ZPPacketTunnel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1DE1F653FFE00A349CA /* ZPPacketTunnel.m */; };
+		D3BAE25B1F653FFE00A349CA /* ZPPacketTunnelEx.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1DF1F653FFE00A349CA /* ZPPacketTunnelEx.h */; };
+		D3BAE25C1F653FFE00A349CA /* ZPTCPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1E01F653FFE00A349CA /* ZPTCPConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3BAE25D1F653FFE00A349CA /* ZPTCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1E11F653FFE00A349CA /* ZPTCPConnection.m */; };
+		D3BAE25E1F653FFE00A349CA /* ZPTCPConnectionEx.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1E21F653FFE00A349CA /* ZPTCPConnectionEx.h */; };
+		D3BAE25F1F653FFE00A349CA /* ZPTCPIPStack.h in Headers */ = {isa = PBXBuildFile; fileRef = D3BAE1E31F653FFE00A349CA /* ZPTCPIPStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3DE8E961F57A0F5006700C0 /* TunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */; };
 		D3DE8E981F57CA64006700C0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE8E971F57CA64006700C0 /* Extension.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +163,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D35240181F4BD0E5006656F0;
 			remoteInfo = PacketTunnel;
+		};
+		D3BAE1551F653FA200A349CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3523FF81F4BD090006656F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3BAE14F1F653FA200A349CA;
+			remoteInfo = ZPTCPIPStack;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -51,6 +183,17 @@
 				D35240221F4BD0E5006656F0 /* PacketTunnel.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BAE15C1F653FA200A349CA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D3BAE1581F653FA200A349CA /* ZPTCPIPStack.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -71,13 +214,138 @@
 		D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		D35240301F4BE7B6006656F0 /* HTTPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPProxyServer.swift; sourceTree = "<group>"; };
 		D35240321F4BECE8006656F0 /* HTTPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnection.swift; sourceTree = "<group>"; };
-		D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZPTCPIPStack.framework; path = Carthage/Build/iOS/ZPTCPIPStack.framework; sourceTree = "<group>"; };
 		D35240371F4D3091006656F0 /* TCPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPConnection.swift; sourceTree = "<group>"; };
 		D35240381F4D3091006656F0 /* TCPProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPProxyServer.swift; sourceTree = "<group>"; };
 		D379F6561F58FCC4007784F4 /* SessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		D379F65A1F590701007784F4 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		D39DFBB41F5BEEB90067F454 /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		D39DFBB91F5CF7E10067F454 /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
+		D3BAE1501F653FA200A349CA /* ZPTCPIPStack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZPTCPIPStack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3BAE1531F653FA200A349CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3BAE15F1F653FFE00A349CA /* def.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = def.c; sourceTree = "<group>"; };
+		D3BAE1601F653FFE00A349CA /* inet_chksum.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inet_chksum.c; sourceTree = "<group>"; };
+		D3BAE1611F653FFE00A349CA /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = init.c; sourceTree = "<group>"; };
+		D3BAE1621F653FFE00A349CA /* ip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip.c; sourceTree = "<group>"; };
+		D3BAE1641F653FFE00A349CA /* autoip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = autoip.c; sourceTree = "<group>"; };
+		D3BAE1651F653FFE00A349CA /* dhcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dhcp.c; sourceTree = "<group>"; };
+		D3BAE1661F653FFE00A349CA /* etharp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = etharp.c; sourceTree = "<group>"; };
+		D3BAE1671F653FFE00A349CA /* icmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = icmp.c; sourceTree = "<group>"; };
+		D3BAE1681F653FFE00A349CA /* igmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = igmp.c; sourceTree = "<group>"; };
+		D3BAE1691F653FFE00A349CA /* ip4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip4.c; sourceTree = "<group>"; };
+		D3BAE16A1F653FFE00A349CA /* ip4_addr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip4_addr.c; sourceTree = "<group>"; };
+		D3BAE16B1F653FFE00A349CA /* ip4_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip4_frag.c; sourceTree = "<group>"; };
+		D3BAE16D1F653FFE00A349CA /* dhcp6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dhcp6.c; sourceTree = "<group>"; };
+		D3BAE16E1F653FFE00A349CA /* ethip6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ethip6.c; sourceTree = "<group>"; };
+		D3BAE16F1F653FFE00A349CA /* icmp6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = icmp6.c; sourceTree = "<group>"; };
+		D3BAE1701F653FFE00A349CA /* inet6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inet6.c; sourceTree = "<group>"; };
+		D3BAE1711F653FFE00A349CA /* ip6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip6.c; sourceTree = "<group>"; };
+		D3BAE1721F653FFE00A349CA /* ip6_addr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip6_addr.c; sourceTree = "<group>"; };
+		D3BAE1731F653FFE00A349CA /* ip6_frag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ip6_frag.c; sourceTree = "<group>"; };
+		D3BAE1741F653FFE00A349CA /* mld6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mld6.c; sourceTree = "<group>"; };
+		D3BAE1751F653FFE00A349CA /* nd6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nd6.c; sourceTree = "<group>"; };
+		D3BAE1761F653FFE00A349CA /* mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mem.c; sourceTree = "<group>"; };
+		D3BAE1771F653FFE00A349CA /* memp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = memp.c; sourceTree = "<group>"; };
+		D3BAE1781F653FFE00A349CA /* netif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = netif.c; sourceTree = "<group>"; };
+		D3BAE1791F653FFE00A349CA /* pbuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pbuf.c; sourceTree = "<group>"; };
+		D3BAE17A1F653FFE00A349CA /* stats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stats.c; sourceTree = "<group>"; };
+		D3BAE17B1F653FFE00A349CA /* sys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sys.c; sourceTree = "<group>"; };
+		D3BAE17C1F653FFE00A349CA /* tcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcp.c; sourceTree = "<group>"; };
+		D3BAE17D1F653FFE00A349CA /* tcp_in.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcp_in.c; sourceTree = "<group>"; };
+		D3BAE17E1F653FFE00A349CA /* tcp_out.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcp_out.c; sourceTree = "<group>"; };
+		D3BAE17F1F653FFE00A349CA /* timeouts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timeouts.c; sourceTree = "<group>"; };
+		D3BAE1801F653FFE00A349CA /* udp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = udp.c; sourceTree = "<group>"; };
+		D3BAE1831F653FFE00A349CA /* cc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cc.h; sourceTree = "<group>"; };
+		D3BAE1861F653FFE00A349CA /* fs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fs.h; sourceTree = "<group>"; };
+		D3BAE1871F653FFE00A349CA /* httpd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpd.h; sourceTree = "<group>"; };
+		D3BAE1881F653FFE00A349CA /* httpd_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpd_opts.h; sourceTree = "<group>"; };
+		D3BAE1891F653FFE00A349CA /* lwiperf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwiperf.h; sourceTree = "<group>"; };
+		D3BAE18A1F653FFE00A349CA /* mdns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdns.h; sourceTree = "<group>"; };
+		D3BAE18B1F653FFE00A349CA /* mdns_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdns_opts.h; sourceTree = "<group>"; };
+		D3BAE18C1F653FFE00A349CA /* mdns_priv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdns_priv.h; sourceTree = "<group>"; };
+		D3BAE18D1F653FFE00A349CA /* mqtt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqtt.h; sourceTree = "<group>"; };
+		D3BAE18E1F653FFE00A349CA /* mqtt_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqtt_opts.h; sourceTree = "<group>"; };
+		D3BAE18F1F653FFE00A349CA /* netbiosns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netbiosns.h; sourceTree = "<group>"; };
+		D3BAE1901F653FFE00A349CA /* netbiosns_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netbiosns_opts.h; sourceTree = "<group>"; };
+		D3BAE1911F653FFE00A349CA /* snmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp.h; sourceTree = "<group>"; };
+		D3BAE1921F653FFE00A349CA /* snmp_core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_core.h; sourceTree = "<group>"; };
+		D3BAE1931F653FFE00A349CA /* snmp_mib2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_mib2.h; sourceTree = "<group>"; };
+		D3BAE1941F653FFE00A349CA /* snmp_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_opts.h; sourceTree = "<group>"; };
+		D3BAE1951F653FFE00A349CA /* snmp_scalar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_scalar.h; sourceTree = "<group>"; };
+		D3BAE1961F653FFE00A349CA /* snmp_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_table.h; sourceTree = "<group>"; };
+		D3BAE1971F653FFE00A349CA /* snmp_threadsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp_threadsync.h; sourceTree = "<group>"; };
+		D3BAE1981F653FFE00A349CA /* snmpv3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmpv3.h; sourceTree = "<group>"; };
+		D3BAE1991F653FFE00A349CA /* sntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sntp.h; sourceTree = "<group>"; };
+		D3BAE19A1F653FFE00A349CA /* sntp_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sntp_opts.h; sourceTree = "<group>"; };
+		D3BAE19B1F653FFE00A349CA /* tftp_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tftp_opts.h; sourceTree = "<group>"; };
+		D3BAE19C1F653FFE00A349CA /* tftp_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tftp_server.h; sourceTree = "<group>"; };
+		D3BAE19D1F653FFE00A349CA /* arch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arch.h; sourceTree = "<group>"; };
+		D3BAE19E1F653FFE00A349CA /* autoip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoip.h; sourceTree = "<group>"; };
+		D3BAE19F1F653FFE00A349CA /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		D3BAE1A01F653FFE00A349CA /* def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = def.h; sourceTree = "<group>"; };
+		D3BAE1A11F653FFE00A349CA /* dhcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dhcp.h; sourceTree = "<group>"; };
+		D3BAE1A21F653FFE00A349CA /* dhcp6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dhcp6.h; sourceTree = "<group>"; };
+		D3BAE1A31F653FFE00A349CA /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
+		D3BAE1A41F653FFE00A349CA /* errno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errno.h; sourceTree = "<group>"; };
+		D3BAE1A51F653FFE00A349CA /* etharp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = etharp.h; sourceTree = "<group>"; };
+		D3BAE1A61F653FFE00A349CA /* ethip6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethip6.h; sourceTree = "<group>"; };
+		D3BAE1A71F653FFE00A349CA /* icmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icmp.h; sourceTree = "<group>"; };
+		D3BAE1A81F653FFE00A349CA /* icmp6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icmp6.h; sourceTree = "<group>"; };
+		D3BAE1A91F653FFE00A349CA /* igmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igmp.h; sourceTree = "<group>"; };
+		D3BAE1AA1F653FFE00A349CA /* inet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inet.h; sourceTree = "<group>"; };
+		D3BAE1AB1F653FFE00A349CA /* inet_chksum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inet_chksum.h; sourceTree = "<group>"; };
+		D3BAE1AC1F653FFE00A349CA /* init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = init.h; sourceTree = "<group>"; };
+		D3BAE1AD1F653FFE00A349CA /* ip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip.h; sourceTree = "<group>"; };
+		D3BAE1AE1F653FFE00A349CA /* ip4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip4.h; sourceTree = "<group>"; };
+		D3BAE1AF1F653FFE00A349CA /* ip4_addr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip4_addr.h; sourceTree = "<group>"; };
+		D3BAE1B01F653FFE00A349CA /* ip4_frag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip4_frag.h; sourceTree = "<group>"; };
+		D3BAE1B11F653FFE00A349CA /* ip6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip6.h; sourceTree = "<group>"; };
+		D3BAE1B21F653FFE00A349CA /* ip6_addr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip6_addr.h; sourceTree = "<group>"; };
+		D3BAE1B31F653FFE00A349CA /* ip6_frag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip6_frag.h; sourceTree = "<group>"; };
+		D3BAE1B41F653FFE00A349CA /* ip_addr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip_addr.h; sourceTree = "<group>"; };
+		D3BAE1B51F653FFE00A349CA /* mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mem.h; sourceTree = "<group>"; };
+		D3BAE1B61F653FFE00A349CA /* memp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memp.h; sourceTree = "<group>"; };
+		D3BAE1B71F653FFE00A349CA /* mld6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mld6.h; sourceTree = "<group>"; };
+		D3BAE1B81F653FFE00A349CA /* nd6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nd6.h; sourceTree = "<group>"; };
+		D3BAE1B91F653FFE00A349CA /* netif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netif.h; sourceTree = "<group>"; };
+		D3BAE1BA1F653FFE00A349CA /* opt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opt.h; sourceTree = "<group>"; };
+		D3BAE1BB1F653FFE00A349CA /* pbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pbuf.h; sourceTree = "<group>"; };
+		D3BAE1BD1F653FFE00A349CA /* memp_priv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memp_priv.h; sourceTree = "<group>"; };
+		D3BAE1BE1F653FFE00A349CA /* memp_std.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memp_std.h; sourceTree = "<group>"; };
+		D3BAE1BF1F653FFE00A349CA /* nd6_priv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nd6_priv.h; sourceTree = "<group>"; };
+		D3BAE1C01F653FFE00A349CA /* tcp_priv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_priv.h; sourceTree = "<group>"; };
+		D3BAE1C21F653FFE00A349CA /* autoip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoip.h; sourceTree = "<group>"; };
+		D3BAE1C31F653FFE00A349CA /* dhcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dhcp.h; sourceTree = "<group>"; };
+		D3BAE1C41F653FFE00A349CA /* etharp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = etharp.h; sourceTree = "<group>"; };
+		D3BAE1C51F653FFE00A349CA /* ethernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethernet.h; sourceTree = "<group>"; };
+		D3BAE1C61F653FFE00A349CA /* icmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icmp.h; sourceTree = "<group>"; };
+		D3BAE1C71F653FFE00A349CA /* icmp6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icmp6.h; sourceTree = "<group>"; };
+		D3BAE1C81F653FFE00A349CA /* igmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igmp.h; sourceTree = "<group>"; };
+		D3BAE1C91F653FFE00A349CA /* ip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip.h; sourceTree = "<group>"; };
+		D3BAE1CA1F653FFE00A349CA /* ip4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip4.h; sourceTree = "<group>"; };
+		D3BAE1CB1F653FFE00A349CA /* ip6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip6.h; sourceTree = "<group>"; };
+		D3BAE1CC1F653FFE00A349CA /* mld6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mld6.h; sourceTree = "<group>"; };
+		D3BAE1CD1F653FFE00A349CA /* nd6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nd6.h; sourceTree = "<group>"; };
+		D3BAE1CE1F653FFE00A349CA /* tcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp.h; sourceTree = "<group>"; };
+		D3BAE1CF1F653FFE00A349CA /* udp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udp.h; sourceTree = "<group>"; };
+		D3BAE1D01F653FFE00A349CA /* snmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snmp.h; sourceTree = "<group>"; };
+		D3BAE1D11F653FFE00A349CA /* stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stats.h; sourceTree = "<group>"; };
+		D3BAE1D21F653FFE00A349CA /* sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sys.h; sourceTree = "<group>"; };
+		D3BAE1D31F653FFE00A349CA /* tcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp.h; sourceTree = "<group>"; };
+		D3BAE1D41F653FFE00A349CA /* timeouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timeouts.h; sourceTree = "<group>"; };
+		D3BAE1D51F653FFE00A349CA /* udp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udp.h; sourceTree = "<group>"; };
+		D3BAE1D71F653FFE00A349CA /* etharp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = etharp.h; sourceTree = "<group>"; };
+		D3BAE1D81F653FFE00A349CA /* ethernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethernet.h; sourceTree = "<group>"; };
+		D3BAE1D91F653FFE00A349CA /* lowpan6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lowpan6.h; sourceTree = "<group>"; };
+		D3BAE1DA1F653FFE00A349CA /* lowpan6_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lowpan6_opts.h; sourceTree = "<group>"; };
+		D3BAE1DB1F653FFE00A349CA /* lwipopts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwipopts.h; sourceTree = "<group>"; };
+		D3BAE1DC1F653FFE00A349CA /* lwIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lwIP.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/lwIP.h; sourceTree = SOURCE_ROOT; };
+		D3BAE1DD1F653FFE00A349CA /* ZPPacketTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPPacketTunnel.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPPacketTunnel.h; sourceTree = SOURCE_ROOT; };
+		D3BAE1DE1F653FFE00A349CA /* ZPPacketTunnel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZPPacketTunnel.m; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPPacketTunnel.m; sourceTree = SOURCE_ROOT; };
+		D3BAE1DF1F653FFE00A349CA /* ZPPacketTunnelEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPPacketTunnelEx.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPPacketTunnelEx.h; sourceTree = SOURCE_ROOT; };
+		D3BAE1E01F653FFE00A349CA /* ZPTCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPTCPConnection.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPTCPConnection.h; sourceTree = SOURCE_ROOT; };
+		D3BAE1E11F653FFE00A349CA /* ZPTCPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZPTCPConnection.m; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPTCPConnection.m; sourceTree = SOURCE_ROOT; };
+		D3BAE1E21F653FFE00A349CA /* ZPTCPConnectionEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPTCPConnectionEx.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPTCPConnectionEx.h; sourceTree = SOURCE_ROOT; };
+		D3BAE1E31F653FFE00A349CA /* ZPTCPIPStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPTCPIPStack.h; path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/ZPTCPIPStack.h; sourceTree = SOURCE_ROOT; };
 		D3DE8E951F57A0F5006700C0 /* TunnelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelManager.swift; sourceTree = "<group>"; };
 		D3DE8E971F57CA64006700C0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3BAE1571F653FA200A349CA /* ZPTCPIPStack.framework in Frameworks */,
 				D321A2A61F63E26D005F447F /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,8 +365,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D321A2A71F63E285005F447F /* NetworkExtension.framework in Frameworks */,
-				D35240361F4D2BDB006656F0 /* ZPTCPIPStack.framework in Frameworks */,
 				D352402C1F4BE277006656F0 /* CocoaAsyncSocket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BAE14C1F653FA200A349CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +384,7 @@
 			children = (
 				D35240021F4BD090006656F0 /* Sniffer */,
 				D352401A1F4BD0E5006656F0 /* PacketTunnel */,
+				D3BAE1511F653FA200A349CA /* ZPTCPIPStack */,
 				D35240011F4BD090006656F0 /* Products */,
 				D35240291F4BE259006656F0 /* Frameworks */,
 			);
@@ -119,6 +395,7 @@
 			children = (
 				D35240001F4BD090006656F0 /* Sniffer.app */,
 				D35240191F4BD0E5006656F0 /* PacketTunnel.appex */,
+				D3BAE1501F653FA200A349CA /* ZPTCPIPStack.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,13 +445,333 @@
 			isa = PBXGroup;
 			children = (
 				D321A2A51F63E26D005F447F /* NetworkExtension.framework */,
-				D35240341F4D2BC4006656F0 /* ZPTCPIPStack.framework */,
 				D352402A1F4BE259006656F0 /* CocoaAsyncSocket.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D3BAE1511F653FA200A349CA /* ZPTCPIPStack */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE15D1F653FFE00A349CA /* lwIP */,
+				D3BAE1DC1F653FFE00A349CA /* lwIP.h */,
+				D3BAE1DD1F653FFE00A349CA /* ZPPacketTunnel.h */,
+				D3BAE1DE1F653FFE00A349CA /* ZPPacketTunnel.m */,
+				D3BAE1DF1F653FFE00A349CA /* ZPPacketTunnelEx.h */,
+				D3BAE1E01F653FFE00A349CA /* ZPTCPConnection.h */,
+				D3BAE1E11F653FFE00A349CA /* ZPTCPConnection.m */,
+				D3BAE1E21F653FFE00A349CA /* ZPTCPConnectionEx.h */,
+				D3BAE1E31F653FFE00A349CA /* ZPTCPIPStack.h */,
+				D3BAE1531F653FA200A349CA /* Info.plist */,
+			);
+			path = ZPTCPIPStack;
+			sourceTree = "<group>";
+		};
+		D3BAE15D1F653FFE00A349CA /* lwIP */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE15E1F653FFE00A349CA /* core */,
+				D3BAE1811F653FFE00A349CA /* include */,
+				D3BAE1DB1F653FFE00A349CA /* lwipopts.h */,
+			);
+			name = lwIP;
+			path = Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/lwIP;
+			sourceTree = SOURCE_ROOT;
+		};
+		D3BAE15E1F653FFE00A349CA /* core */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE15F1F653FFE00A349CA /* def.c */,
+				D3BAE1601F653FFE00A349CA /* inet_chksum.c */,
+				D3BAE1611F653FFE00A349CA /* init.c */,
+				D3BAE1621F653FFE00A349CA /* ip.c */,
+				D3BAE1631F653FFE00A349CA /* ipv4 */,
+				D3BAE16C1F653FFE00A349CA /* ipv6 */,
+				D3BAE1761F653FFE00A349CA /* mem.c */,
+				D3BAE1771F653FFE00A349CA /* memp.c */,
+				D3BAE1781F653FFE00A349CA /* netif.c */,
+				D3BAE1791F653FFE00A349CA /* pbuf.c */,
+				D3BAE17A1F653FFE00A349CA /* stats.c */,
+				D3BAE17B1F653FFE00A349CA /* sys.c */,
+				D3BAE17C1F653FFE00A349CA /* tcp.c */,
+				D3BAE17D1F653FFE00A349CA /* tcp_in.c */,
+				D3BAE17E1F653FFE00A349CA /* tcp_out.c */,
+				D3BAE17F1F653FFE00A349CA /* timeouts.c */,
+				D3BAE1801F653FFE00A349CA /* udp.c */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		D3BAE1631F653FFE00A349CA /* ipv4 */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1641F653FFE00A349CA /* autoip.c */,
+				D3BAE1651F653FFE00A349CA /* dhcp.c */,
+				D3BAE1661F653FFE00A349CA /* etharp.c */,
+				D3BAE1671F653FFE00A349CA /* icmp.c */,
+				D3BAE1681F653FFE00A349CA /* igmp.c */,
+				D3BAE1691F653FFE00A349CA /* ip4.c */,
+				D3BAE16A1F653FFE00A349CA /* ip4_addr.c */,
+				D3BAE16B1F653FFE00A349CA /* ip4_frag.c */,
+			);
+			path = ipv4;
+			sourceTree = "<group>";
+		};
+		D3BAE16C1F653FFE00A349CA /* ipv6 */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE16D1F653FFE00A349CA /* dhcp6.c */,
+				D3BAE16E1F653FFE00A349CA /* ethip6.c */,
+				D3BAE16F1F653FFE00A349CA /* icmp6.c */,
+				D3BAE1701F653FFE00A349CA /* inet6.c */,
+				D3BAE1711F653FFE00A349CA /* ip6.c */,
+				D3BAE1721F653FFE00A349CA /* ip6_addr.c */,
+				D3BAE1731F653FFE00A349CA /* ip6_frag.c */,
+				D3BAE1741F653FFE00A349CA /* mld6.c */,
+				D3BAE1751F653FFE00A349CA /* nd6.c */,
+			);
+			path = ipv6;
+			sourceTree = "<group>";
+		};
+		D3BAE1811F653FFE00A349CA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1821F653FFE00A349CA /* arch */,
+				D3BAE1841F653FFE00A349CA /* lwip */,
+				D3BAE1D61F653FFE00A349CA /* netif */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		D3BAE1821F653FFE00A349CA /* arch */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1831F653FFE00A349CA /* cc.h */,
+			);
+			path = arch;
+			sourceTree = "<group>";
+		};
+		D3BAE1841F653FFE00A349CA /* lwip */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1851F653FFE00A349CA /* apps */,
+				D3BAE19D1F653FFE00A349CA /* arch.h */,
+				D3BAE19E1F653FFE00A349CA /* autoip.h */,
+				D3BAE19F1F653FFE00A349CA /* debug.h */,
+				D3BAE1A01F653FFE00A349CA /* def.h */,
+				D3BAE1A11F653FFE00A349CA /* dhcp.h */,
+				D3BAE1A21F653FFE00A349CA /* dhcp6.h */,
+				D3BAE1A31F653FFE00A349CA /* err.h */,
+				D3BAE1A41F653FFE00A349CA /* errno.h */,
+				D3BAE1A51F653FFE00A349CA /* etharp.h */,
+				D3BAE1A61F653FFE00A349CA /* ethip6.h */,
+				D3BAE1A71F653FFE00A349CA /* icmp.h */,
+				D3BAE1A81F653FFE00A349CA /* icmp6.h */,
+				D3BAE1A91F653FFE00A349CA /* igmp.h */,
+				D3BAE1AA1F653FFE00A349CA /* inet.h */,
+				D3BAE1AB1F653FFE00A349CA /* inet_chksum.h */,
+				D3BAE1AC1F653FFE00A349CA /* init.h */,
+				D3BAE1AD1F653FFE00A349CA /* ip.h */,
+				D3BAE1AE1F653FFE00A349CA /* ip4.h */,
+				D3BAE1AF1F653FFE00A349CA /* ip4_addr.h */,
+				D3BAE1B01F653FFE00A349CA /* ip4_frag.h */,
+				D3BAE1B11F653FFE00A349CA /* ip6.h */,
+				D3BAE1B21F653FFE00A349CA /* ip6_addr.h */,
+				D3BAE1B31F653FFE00A349CA /* ip6_frag.h */,
+				D3BAE1B41F653FFE00A349CA /* ip_addr.h */,
+				D3BAE1B51F653FFE00A349CA /* mem.h */,
+				D3BAE1B61F653FFE00A349CA /* memp.h */,
+				D3BAE1B71F653FFE00A349CA /* mld6.h */,
+				D3BAE1B81F653FFE00A349CA /* nd6.h */,
+				D3BAE1B91F653FFE00A349CA /* netif.h */,
+				D3BAE1BA1F653FFE00A349CA /* opt.h */,
+				D3BAE1BB1F653FFE00A349CA /* pbuf.h */,
+				D3BAE1BC1F653FFE00A349CA /* priv */,
+				D3BAE1C11F653FFE00A349CA /* prot */,
+				D3BAE1D01F653FFE00A349CA /* snmp.h */,
+				D3BAE1D11F653FFE00A349CA /* stats.h */,
+				D3BAE1D21F653FFE00A349CA /* sys.h */,
+				D3BAE1D31F653FFE00A349CA /* tcp.h */,
+				D3BAE1D41F653FFE00A349CA /* timeouts.h */,
+				D3BAE1D51F653FFE00A349CA /* udp.h */,
+			);
+			path = lwip;
+			sourceTree = "<group>";
+		};
+		D3BAE1851F653FFE00A349CA /* apps */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1861F653FFE00A349CA /* fs.h */,
+				D3BAE1871F653FFE00A349CA /* httpd.h */,
+				D3BAE1881F653FFE00A349CA /* httpd_opts.h */,
+				D3BAE1891F653FFE00A349CA /* lwiperf.h */,
+				D3BAE18A1F653FFE00A349CA /* mdns.h */,
+				D3BAE18B1F653FFE00A349CA /* mdns_opts.h */,
+				D3BAE18C1F653FFE00A349CA /* mdns_priv.h */,
+				D3BAE18D1F653FFE00A349CA /* mqtt.h */,
+				D3BAE18E1F653FFE00A349CA /* mqtt_opts.h */,
+				D3BAE18F1F653FFE00A349CA /* netbiosns.h */,
+				D3BAE1901F653FFE00A349CA /* netbiosns_opts.h */,
+				D3BAE1911F653FFE00A349CA /* snmp.h */,
+				D3BAE1921F653FFE00A349CA /* snmp_core.h */,
+				D3BAE1931F653FFE00A349CA /* snmp_mib2.h */,
+				D3BAE1941F653FFE00A349CA /* snmp_opts.h */,
+				D3BAE1951F653FFE00A349CA /* snmp_scalar.h */,
+				D3BAE1961F653FFE00A349CA /* snmp_table.h */,
+				D3BAE1971F653FFE00A349CA /* snmp_threadsync.h */,
+				D3BAE1981F653FFE00A349CA /* snmpv3.h */,
+				D3BAE1991F653FFE00A349CA /* sntp.h */,
+				D3BAE19A1F653FFE00A349CA /* sntp_opts.h */,
+				D3BAE19B1F653FFE00A349CA /* tftp_opts.h */,
+				D3BAE19C1F653FFE00A349CA /* tftp_server.h */,
+			);
+			path = apps;
+			sourceTree = "<group>";
+		};
+		D3BAE1BC1F653FFE00A349CA /* priv */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1BD1F653FFE00A349CA /* memp_priv.h */,
+				D3BAE1BE1F653FFE00A349CA /* memp_std.h */,
+				D3BAE1BF1F653FFE00A349CA /* nd6_priv.h */,
+				D3BAE1C01F653FFE00A349CA /* tcp_priv.h */,
+			);
+			path = priv;
+			sourceTree = "<group>";
+		};
+		D3BAE1C11F653FFE00A349CA /* prot */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1C21F653FFE00A349CA /* autoip.h */,
+				D3BAE1C31F653FFE00A349CA /* dhcp.h */,
+				D3BAE1C41F653FFE00A349CA /* etharp.h */,
+				D3BAE1C51F653FFE00A349CA /* ethernet.h */,
+				D3BAE1C61F653FFE00A349CA /* icmp.h */,
+				D3BAE1C71F653FFE00A349CA /* icmp6.h */,
+				D3BAE1C81F653FFE00A349CA /* igmp.h */,
+				D3BAE1C91F653FFE00A349CA /* ip.h */,
+				D3BAE1CA1F653FFE00A349CA /* ip4.h */,
+				D3BAE1CB1F653FFE00A349CA /* ip6.h */,
+				D3BAE1CC1F653FFE00A349CA /* mld6.h */,
+				D3BAE1CD1F653FFE00A349CA /* nd6.h */,
+				D3BAE1CE1F653FFE00A349CA /* tcp.h */,
+				D3BAE1CF1F653FFE00A349CA /* udp.h */,
+			);
+			path = prot;
+			sourceTree = "<group>";
+		};
+		D3BAE1D61F653FFE00A349CA /* netif */ = {
+			isa = PBXGroup;
+			children = (
+				D3BAE1D71F653FFE00A349CA /* etharp.h */,
+				D3BAE1D81F653FFE00A349CA /* ethernet.h */,
+				D3BAE1D91F653FFE00A349CA /* lowpan6.h */,
+				D3BAE1DA1F653FFE00A349CA /* lowpan6_opts.h */,
+			);
+			path = netif;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D3BAE14D1F653FA200A349CA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3BAE22B1F653FFE00A349CA /* init.h in Headers */,
+				D3BAE2561F653FFE00A349CA /* lowpan6_opts.h in Headers */,
+				D3BAE2211F653FFE00A349CA /* dhcp6.h in Headers */,
+				D3BAE2331F653FFE00A349CA /* ip_addr.h in Headers */,
+				D3BAE2161F653FFE00A349CA /* snmp_threadsync.h in Headers */,
+				D3BAE2381F653FFE00A349CA /* netif.h in Headers */,
+				D3BAE2431F653FFE00A349CA /* icmp.h in Headers */,
+				D3BAE2171F653FFE00A349CA /* snmpv3.h in Headers */,
+				D3BAE23C1F653FFE00A349CA /* memp_std.h in Headers */,
+				D3BAE22F1F653FFE00A349CA /* ip4_frag.h in Headers */,
+				D3BAE25E1F653FFE00A349CA /* ZPTCPConnectionEx.h in Headers */,
+				D3BAE2411F653FFE00A349CA /* etharp.h in Headers */,
+				D3BAE2231F653FFE00A349CA /* errno.h in Headers */,
+				D3BAE2281F653FFE00A349CA /* igmp.h in Headers */,
+				D3BAE2101F653FFE00A349CA /* snmp.h in Headers */,
+				D3BAE2241F653FFE00A349CA /* etharp.h in Headers */,
+				D3BAE2301F653FFE00A349CA /* ip6.h in Headers */,
+				D3BAE2391F653FFE00A349CA /* opt.h in Headers */,
+				D3BAE2111F653FFE00A349CA /* snmp_core.h in Headers */,
+				D3BAE20F1F653FFE00A349CA /* netbiosns_opts.h in Headers */,
+				D3BAE2341F653FFE00A349CA /* mem.h in Headers */,
+				D3BAE21C1F653FFE00A349CA /* arch.h in Headers */,
+				D3BAE24A1F653FFE00A349CA /* nd6.h in Headers */,
+				D3BAE2291F653FFE00A349CA /* inet.h in Headers */,
+				D3BAE21A1F653FFE00A349CA /* tftp_opts.h in Headers */,
+				D3BAE2251F653FFE00A349CA /* ethip6.h in Headers */,
+				D3BAE2581F653FFE00A349CA /* lwIP.h in Headers */,
+				D3BAE20D1F653FFE00A349CA /* mqtt_opts.h in Headers */,
+				D3BAE23D1F653FFE00A349CA /* nd6_priv.h in Headers */,
+				D3BAE2511F653FFE00A349CA /* timeouts.h in Headers */,
+				D3BAE24D1F653FFE00A349CA /* snmp.h in Headers */,
+				D3BAE2461F653FFE00A349CA /* ip.h in Headers */,
+				D3BAE2441F653FFE00A349CA /* icmp6.h in Headers */,
+				D3BAE2361F653FFE00A349CA /* mld6.h in Headers */,
+				D3BAE24F1F653FFE00A349CA /* sys.h in Headers */,
+				D3BAE2271F653FFE00A349CA /* icmp6.h in Headers */,
+				D3BAE2521F653FFE00A349CA /* udp.h in Headers */,
+				D3BAE2131F653FFE00A349CA /* snmp_opts.h in Headers */,
+				D3BAE21E1F653FFE00A349CA /* debug.h in Headers */,
+				D3BAE23E1F653FFE00A349CA /* tcp_priv.h in Headers */,
+				D3BAE2471F653FFE00A349CA /* ip4.h in Headers */,
+				D3BAE2451F653FFE00A349CA /* igmp.h in Headers */,
+				D3BAE2091F653FFE00A349CA /* mdns.h in Headers */,
+				D3BAE2491F653FFE00A349CA /* mld6.h in Headers */,
+				D3BAE2571F653FFE00A349CA /* lwipopts.h in Headers */,
+				D3BAE2261F653FFE00A349CA /* icmp.h in Headers */,
+				D3BAE2081F653FFE00A349CA /* lwiperf.h in Headers */,
+				D3BAE2351F653FFE00A349CA /* memp.h in Headers */,
+				D3BAE22C1F653FFE00A349CA /* ip.h in Headers */,
+				D3BAE25C1F653FFE00A349CA /* ZPTCPConnection.h in Headers */,
+				D3BAE24E1F653FFE00A349CA /* stats.h in Headers */,
+				D3BAE22A1F653FFE00A349CA /* inet_chksum.h in Headers */,
+				D3BAE24B1F653FFE00A349CA /* tcp.h in Headers */,
+				D3BAE2541F653FFE00A349CA /* ethernet.h in Headers */,
+				D3BAE24C1F653FFE00A349CA /* udp.h in Headers */,
+				D3BAE22E1F653FFE00A349CA /* ip4_addr.h in Headers */,
+				D3BAE2531F653FFE00A349CA /* etharp.h in Headers */,
+				D3BAE2141F653FFE00A349CA /* snmp_scalar.h in Headers */,
+				D3BAE2311F653FFE00A349CA /* ip6_addr.h in Headers */,
+				D3BAE22D1F653FFE00A349CA /* ip4.h in Headers */,
+				D3BAE20E1F653FFE00A349CA /* netbiosns.h in Headers */,
+				D3BAE2201F653FFE00A349CA /* dhcp.h in Headers */,
+				D3BAE2371F653FFE00A349CA /* nd6.h in Headers */,
+				D3BAE21F1F653FFE00A349CA /* def.h in Headers */,
+				D3BAE25F1F653FFE00A349CA /* ZPTCPIPStack.h in Headers */,
+				D3BAE2501F653FFE00A349CA /* tcp.h in Headers */,
+				D3BAE25B1F653FFE00A349CA /* ZPPacketTunnelEx.h in Headers */,
+				D3BAE2481F653FFE00A349CA /* ip6.h in Headers */,
+				D3BAE2321F653FFE00A349CA /* ip6_frag.h in Headers */,
+				D3BAE2151F653FFE00A349CA /* snmp_table.h in Headers */,
+				D3BAE21D1F653FFE00A349CA /* autoip.h in Headers */,
+				D3BAE2221F653FFE00A349CA /* err.h in Headers */,
+				D3BAE2061F653FFE00A349CA /* httpd.h in Headers */,
+				D3BAE2551F653FFE00A349CA /* lowpan6.h in Headers */,
+				D3BAE2421F653FFE00A349CA /* ethernet.h in Headers */,
+				D3BAE20B1F653FFE00A349CA /* mdns_priv.h in Headers */,
+				D3BAE21B1F653FFE00A349CA /* tftp_server.h in Headers */,
+				D3BAE2181F653FFE00A349CA /* sntp.h in Headers */,
+				D3BAE2191F653FFE00A349CA /* sntp_opts.h in Headers */,
+				D3BAE23B1F653FFE00A349CA /* memp_priv.h in Headers */,
+				D3BAE2121F653FFE00A349CA /* snmp_mib2.h in Headers */,
+				D3BAE20A1F653FFE00A349CA /* mdns_opts.h in Headers */,
+				D3BAE23A1F653FFE00A349CA /* pbuf.h in Headers */,
+				D3BAE2041F653FFE00A349CA /* cc.h in Headers */,
+				D3BAE2591F653FFE00A349CA /* ZPPacketTunnel.h in Headers */,
+				D3BAE2401F653FFE00A349CA /* dhcp.h in Headers */,
+				D3BAE23F1F653FFE00A349CA /* autoip.h in Headers */,
+				D3BAE2051F653FFE00A349CA /* fs.h in Headers */,
+				D3BAE20C1F653FFE00A349CA /* mqtt.h in Headers */,
+				D3BAE2071F653FFE00A349CA /* httpd_opts.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		D3523FFF1F4BD090006656F0 /* Sniffer */ = {
@@ -186,11 +783,13 @@
 				D3523FFE1F4BD090006656F0 /* Resources */,
 				D35240261F4BD0E5006656F0 /* Embed App Extensions */,
 				D352402F1F4BE2F9006656F0 /* Copy Carthage Frameworks */,
+				D3BAE15C1F653FA200A349CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D35240211F4BD0E5006656F0 /* PBXTargetDependency */,
+				D3BAE1561F653FA200A349CA /* PBXTargetDependency */,
 			);
 			name = Sniffer;
 			productName = Sniffer;
@@ -214,6 +813,24 @@
 			productReference = D35240191F4BD0E5006656F0 /* PacketTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D3BAE14F1F653FA200A349CA /* ZPTCPIPStack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3BAE1591F653FA200A349CA /* Build configuration list for PBXNativeTarget "ZPTCPIPStack" */;
+			buildPhases = (
+				D3BAE14B1F653FA200A349CA /* Sources */,
+				D3BAE14C1F653FA200A349CA /* Frameworks */,
+				D3BAE14D1F653FA200A349CA /* Headers */,
+				D3BAE14E1F653FA200A349CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZPTCPIPStack;
+			productName = ZPTCPIPStack;
+			productReference = D3BAE1501F653FA200A349CA /* ZPTCPIPStack.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -235,6 +852,11 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
+					D3BAE14F1F653FA200A349CA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 7SAYZHVU5H;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = D3523FFB1F4BD090006656F0 /* Build configuration list for PBXProject "Sniffer" */;
@@ -252,6 +874,7 @@
 			targets = (
 				D3523FFF1F4BD090006656F0 /* Sniffer */,
 				D35240181F4BD0E5006656F0 /* PacketTunnel */,
+				D3BAE14F1F653FA200A349CA /* ZPTCPIPStack */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +897,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3BAE14E1F653FA200A349CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -284,7 +914,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ZPTCPIPStack.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -324,6 +953,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3BAE14B1F653FA200A349CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3BAE1FA1F653FFE00A349CA /* memp.c in Sources */,
+				D3BAE1F21F653FFE00A349CA /* icmp6.c in Sources */,
+				D3BAE1EB1F653FFE00A349CA /* icmp.c in Sources */,
+				D3BAE1F51F653FFE00A349CA /* ip6_addr.c in Sources */,
+				D3BAE1F11F653FFE00A349CA /* ethip6.c in Sources */,
+				D3BAE1FC1F653FFE00A349CA /* pbuf.c in Sources */,
+				D3BAE1E61F653FFE00A349CA /* init.c in Sources */,
+				D3BAE2001F653FFE00A349CA /* tcp_in.c in Sources */,
+				D3BAE1FB1F653FFE00A349CA /* netif.c in Sources */,
+				D3BAE1E81F653FFE00A349CA /* autoip.c in Sources */,
+				D3BAE1FF1F653FFE00A349CA /* tcp.c in Sources */,
+				D3BAE1FE1F653FFE00A349CA /* sys.c in Sources */,
+				D3BAE1EC1F653FFE00A349CA /* igmp.c in Sources */,
+				D3BAE1E91F653FFE00A349CA /* dhcp.c in Sources */,
+				D3BAE1ED1F653FFE00A349CA /* ip4.c in Sources */,
+				D3BAE1F81F653FFE00A349CA /* nd6.c in Sources */,
+				D3BAE1F01F653FFE00A349CA /* dhcp6.c in Sources */,
+				D3BAE1F91F653FFE00A349CA /* mem.c in Sources */,
+				D3BAE1FD1F653FFE00A349CA /* stats.c in Sources */,
+				D3BAE25D1F653FFE00A349CA /* ZPTCPConnection.m in Sources */,
+				D3BAE1F71F653FFE00A349CA /* mld6.c in Sources */,
+				D3BAE2011F653FFE00A349CA /* tcp_out.c in Sources */,
+				D3BAE1E51F653FFE00A349CA /* inet_chksum.c in Sources */,
+				D3BAE1EF1F653FFE00A349CA /* ip4_frag.c in Sources */,
+				D3BAE1E71F653FFE00A349CA /* ip.c in Sources */,
+				D3BAE1F41F653FFE00A349CA /* ip6.c in Sources */,
+				D3BAE2021F653FFE00A349CA /* timeouts.c in Sources */,
+				D3BAE1E41F653FFE00A349CA /* def.c in Sources */,
+				D3BAE1EE1F653FFE00A349CA /* ip4_addr.c in Sources */,
+				D3BAE25A1F653FFE00A349CA /* ZPPacketTunnel.m in Sources */,
+				D3BAE1F31F653FFE00A349CA /* inet6.c in Sources */,
+				D3BAE1F61F653FFE00A349CA /* ip6_frag.c in Sources */,
+				D3BAE1EA1F653FFE00A349CA /* etharp.c in Sources */,
+				D3BAE2031F653FFE00A349CA /* udp.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -331,6 +1001,11 @@
 			isa = PBXTargetDependency;
 			target = D35240181F4BD0E5006656F0 /* PacketTunnel */;
 			targetProxy = D35240201F4BD0E5006656F0 /* PBXContainerItemProxy */;
+		};
+		D3BAE1561F653FA200A349CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3BAE14F1F653FA200A349CA /* ZPTCPIPStack */;
+			targetProxy = D3BAE1551F653FA200A349CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -524,6 +1199,52 @@
 			};
 			name = Release;
 		};
+		D3BAE15A1F653FA200A349CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ZPTCPIPStack/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.ZPTCPIPStack;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/lwIP/include";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D3BAE15B1F653FA200A349CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7SAYZHVU5H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ZPTCPIPStack/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zapcannon87.ZPTCPIPStack;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts/ZPTCPIPStack/ZPTCPIPStack/lwIP/include";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +1274,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D3BAE1591F653FA200A349CA /* Build configuration list for PBXNativeTarget "ZPTCPIPStack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3BAE15A1F653FA200A349CA /* Debug */,
+				D3BAE15B1F653FA200A349CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

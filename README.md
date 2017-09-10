@@ -11,6 +11,10 @@ if you installed carthage, just run this command.
 carthage update
 ```
 
+#### Warnning
+
+there is a problem with directly integrating ZPTCPIPStack into project using Carthage, so I must refer the files to the project's inner framework. if you just run this demo, well, no problem. but if you want to modify file or file's organisation, you must know what you are doing.
+
 ## Feature
 
 Now, this demo just implement HTTP & HTTPS & TCP(Except HTTP & HTTPS) Proxy.
