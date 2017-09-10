@@ -6,10 +6,12 @@ Sniffer is based on [NetworkExtension](https://developer.apple.com/documentation
 
 Before running, use [Carthage](https://github.com/Carthage/Carthage) to integrate [CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket) & [ZPTCPIPStack](https://github.com/zapcannon87/ZPTCPIPStack).
 
-if you installed carthage, just run this command.
+If you installed carthage, just run this command.
 ```bash
 carthage update
 ```
+
+**Then, add the extension and framework's scheme.**
 
 #### Warning
 
