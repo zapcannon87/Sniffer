@@ -104,18 +104,17 @@ class HTTPConnection: NSObject {
         self.incomingSocket.disconnectAfterWriting()
         self.outgoingSocket.disconnectAfterWriting()
         
+        /* session */
+        self.sessionModel.note = note
         if self.didAddSessionToManager {
-            /* session */
-            self.sessionModel.note = note
             /* session status */
             if note == "EOF" {
                 self.sessionModel.status = .finish
             } else {
                 self.sessionModel.status = .close
             }
-        } else {
-            // TODO: - log something
         }
+        SessionManager.shared.closedAppend(self.sessionModel)
         
         self.server?.remove(with: self)
     }
@@ -125,7 +124,9 @@ class HTTPConnection: NSObject {
             return
         }
         self.didAddSessionToManager = true
-        SessionManager.shared.append(self.sessionModel)
+        if !self.didClose {
+            SessionManager.shared.activeAppend(self.sessionModel)
+        }
     }
     
 }
@@ -189,7 +190,7 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
                 let host: String = requestHeader.host
                 else
             {
-                self.close(note: "error in requestHeader")
+                self.close(note: "error in decoding request header")
                 return
             }
             
@@ -198,7 +199,6 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
             self.requestHelper.handleHeader(with: requestHeader)
             
             /* session */
-            self.addSessionToManager()
             self.sessionModel.date = Date().timeIntervalSince1970
             self.sessionModel.method = self.requestHeader.method?.rawValue
             self.sessionModel.userAgent = self.requestHeader.userAgent
@@ -209,6 +209,7 @@ extension HTTPConnection: GCDAsyncSocketDelegate {
             self.sessionModel.requestHeaders = self.requestHeader.headerString
             /* session status */
             self.sessionModel.status = .connect
+            self.addSessionToManager()
             
             /* connect remote */
             do {
@@ -430,9 +431,6 @@ class HTTPHeader {
         let headers: [String] = headerString.components(
             separatedBy: "\r\n"
         )
-        guard headers.count >= 2 else {
-            return nil
-        }
         self.headers = headers
     }
     
@@ -500,9 +498,8 @@ class HTTPRequestHeader: HTTPHeader {
         guard
             let comps: [String] = self.headers
                 .first?
-                .trimmingCharacters(
-                    in: CharacterSet.whitespacesAndNewlines
-                ).components(separatedBy: " "),
+                .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                .components(separatedBy: " "),
             comps.count >= 2
             else
         {

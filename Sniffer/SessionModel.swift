@@ -9,7 +9,17 @@
 import Foundation
 import QuartzCore
 
-class SessionModel {
+class SessionModel: Hashable, Equatable {
+    
+    /* Hashable */
+    var hashValue: Int {
+        return self.index
+    }
+    
+    /* Equatable */
+    static func == (lhs: SessionModel, rhs: SessionModel) -> Bool {
+        return lhs.index == rhs.index
+    }
     
     var index: Int = -1
     

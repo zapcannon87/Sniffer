@@ -10,9 +10,11 @@ import Foundation
 
 class SessionManager {
     
-    private(set) var sessions: [SessionModel] = []
-    
     static let shared: SessionManager = SessionManager()
+    
+    private(set) var activeSessions: Set<SessionModel> = []
+    
+    private(set) var closedSessions: Array<SessionModel> = []
     
     private let queue: DispatchQueue = DispatchQueue(label: "SessionManager.queue")
     
@@ -20,29 +22,57 @@ class SessionManager {
     
     private init() {}
     
-    func append(_ session: SessionModel) {
+    func closedAppend(_ session: SessionModel) {
         self.queue.async {
+            self.activeSessions.remove(session)
+            if self.closedSessions.count == 50 {
+                let _ = self.closedSessions.remove(at: 0)
+            }
+            self.closedSessions.append(session)
+        }
+    }
+    
+    func activeAppend(_ session: SessionModel) {
+        self.queue.async {
+            /* maybe unnecessary, prevent overflow. :P */
+            if self.index == Int.max {
+                /*
+                 unsafe if still has a index == 0 in set!
+                 oh, shit. I don't want to consider it anymore.
+                 */
+                self.index = 0
+            }
             session.index = self.index
             self.index += 1
-            if self.sessions.count == 100 {
-                let _ = self.sessions.dropFirst()
-            }
-            self.sessions.append(session)
+            self.activeSessions.insert(session)
         }
     }
     
     func getSessionsData(completionHandler: @escaping (Data) -> Void) {
         self.queue.async {
-            var dics: [[String : Any]] = Array<[String : Any]>.init(
+            /* active */
+            var activeDics: [[String : Any]] = Array<[String : Any]>.init(
                 repeating: [:],
-                count: self.sessions.count
+                count: self.activeSessions.count
             )
-            for (index, item) in self.sessions.enumerated() {
-                dics[index] = item.getDic()
+            for (index, item) in self.activeSessions.enumerated() {
+                activeDics[index] = item.getDic()
+            }
+            /* closed */
+            var closedDics: [[String : Any]] = Array<[String : Any]>.init(
+                repeating: [:],
+                count: self.closedSessions.count
+            )
+            for (index, item) in self.closedSessions.enumerated() {
+                closedDics[index] = item.getDic()
             }
             do {
+                let json: [String : Any] = [
+                    "activeSessions" : activeDics,
+                    "closedSessions" : closedDics
+                ]
                 let data: Data = try JSONSerialization.data(
-                    withJSONObject: dics,
+                    withJSONObject: json,
                     options: []
                 )
                 completionHandler(data)

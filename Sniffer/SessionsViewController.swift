@@ -15,7 +15,9 @@ class SessionsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var models: [SessionModel] = []
+    var activeModels: [SessionModel] = []
+    
+    var closedModels: [SessionModel] = []
     
     let dateFormatter: DateFormatter = DateFormatter()
     
@@ -62,18 +64,33 @@ class SessionsViewController: UIViewController {
                 }
                 do {
                     let jsonObj: Any = try JSONSerialization.jsonObject(with: _data, options: [.allowFragments])
-                    guard let jsonDics: [[String : Any]] = jsonObj as? [[String : Any]] else {
+                    guard let json: [String : Any] = jsonObj as? [String : Any],
+                        let activeDics: [[String : Any]] = json.value(for: "activeSessions"),
+                        let closedDics: [[String : Any]] = json.value(for: "closedSessions") else {
                         assertionFailure("\(jsonObj)")
                         return
                     }
-                    var models: [SessionModel] = [SessionModel].init(
+                    
+                    /* active */
+                    var activeModels: [SessionModel] = [SessionModel].init(
                         repeating: SessionModel(),
-                        count: jsonDics.count
+                        count: activeDics.count
                     )
-                    for (index, item) in jsonDics.enumerated() {
-                        models[index] = SessionModel(dic: item)
+                    for (index, item) in activeDics.enumerated() {
+                        activeModels[index] = SessionModel(dic: item)
                     }
-                    self.models = models
+                    self.activeModels = activeModels
+                    
+                    /* closed */
+                    var closedModels: [SessionModel] = [SessionModel].init(
+                        repeating: SessionModel(),
+                        count: closedDics.count
+                    )
+                    for (index, item) in closedDics.enumerated() {
+                        closedModels[index] = SessionModel(dic: item)
+                    }
+                    self.closedModels = closedModels
+                    
                     self.tableView.reloadData()
                 } catch {
                     assertionFailure("\(error)")
@@ -98,13 +115,34 @@ class SessionsViewController: UIViewController {
 
 extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Active Sessions"
+        } else {
+            return "Closed Sessions"
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.models.count
+        if section == 0 {
+            return self.activeModels.count
+        } else {
+            return self.closedModels.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SessionsViewCell = tableView.dequeueReusableCell(withIdentifier: "SessionsViewCell") as! SessionsViewCell
-        let model: SessionModel = self.models[self.models.count - indexPath.row - 1]
+        var model: SessionModel
+        if indexPath.section == 0 {
+            model = self.activeModels[self.activeModels.count - indexPath.row - 1]
+        } else {
+            model = self.closedModels[self.closedModels.count - indexPath.row - 1]
+        }
         cell.indexLabel.text = "\(model.index)"
         cell.methodLabel.text = model.method
         if let timeInterval: Double = model.date {
@@ -128,7 +166,13 @@ extension SessionsViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: true)
         }
         let vc: SessionViewController = self.storyboard?.instantiateViewController(withIdentifier: "SessionViewController") as! SessionViewController
-        vc.model = self.models[self.models.count - indexPath.row - 1]
+        var model: SessionModel
+        if indexPath.section == 0 {
+            model = self.activeModels[self.activeModels.count - indexPath.row - 1]
+        } else {
+            model = self.closedModels[self.closedModels.count - indexPath.row - 1]
+        }
+        vc.model = model
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

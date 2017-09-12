@@ -34,7 +34,7 @@ class TCPConnection: NSObject {
         super.init()
         let queue: DispatchQueue = DispatchQueue(label: "TCPConnection.delegateQueue")
         if !self.local.syncSetDelegate(self, delegateQueue: queue) {
-            print("Local abort before connect remote.")
+            self.close(with: "Local TCP has aborted before connecting remote.")
             return nil
         }
         self.remote.synchronouslySetDelegate(
@@ -43,7 +43,6 @@ class TCPConnection: NSObject {
         )
         
         /* session */
-        self.addSessionToManager()
         self.sessionModel.date = Date().timeIntervalSince1970
         self.sessionModel.method = "TCP"
         self.sessionModel.localIP = self.local.srcAddr
@@ -53,6 +52,7 @@ class TCPConnection: NSObject {
         self.sessionModel.url = "\(self.local.destAddr):\(self.local.destPort)"
         /* session status */
         self.sessionModel.status = .connect
+        self.addSessionToManager()
         
         do {
             try self.remote.connect(
@@ -86,18 +86,17 @@ class TCPConnection: NSObject {
         self.local.closeAfterWriting()
         self.remote.disconnectAfterWriting()
         
+        /* session */
+        self.sessionModel.note = note
+        /* session status */
         if self.didAddSessionToManager {
-            /* session */
-            self.sessionModel.note = note
-            /* session status */
             if note == "EOF" {
                 self.sessionModel.status = .finish
             } else {
                 self.sessionModel.status = .close
             }
-        } else {
-            // TODO: - log something
         }
+        SessionManager.shared.closedAppend(self.sessionModel)
         
         self.server?.remove(connection: self)
     }
@@ -107,7 +106,9 @@ class TCPConnection: NSObject {
             return
         }
         self.didAddSessionToManager = true
-        SessionManager.shared.append(self.sessionModel)
+        if !self.didClose {
+            SessionManager.shared.activeAppend(self.sessionModel)
+        }
     }
     
 }
